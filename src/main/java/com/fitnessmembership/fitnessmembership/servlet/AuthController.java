@@ -1,7 +1,7 @@
 package com.fitnessmembership.fitnessmembership.servlet;
 
-import com.fitnessmembership.model.User;
-import com.fitnessmembership.service.AuthService;
+import com.fitnessmembership.fitnessmembership.model.User;
+import com.fitnessmembership.fitnessmembership.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

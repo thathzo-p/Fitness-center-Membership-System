@@ -1,7 +1,7 @@
 package com.fitnessmembership.fitnessmembership.service;
 
-import com.fitnessmembership.model.User;
-import com.fitnessmembership.util.FileHelper;
+import com.fitnessmembership.fitnessmembership.model.User;
+import com.fitnessmembership.fitnessmembership.util.FileHelper;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
 
