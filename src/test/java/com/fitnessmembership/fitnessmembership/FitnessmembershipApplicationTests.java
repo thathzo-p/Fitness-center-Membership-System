@@ -9,5 +9,4 @@ class FitnessmembershipApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

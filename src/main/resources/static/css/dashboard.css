@@ -1,0 +1,534 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #111;
+    color: #fff;
+}
+
+.pf-wrap {
+    min-height: 100vh;
+    background: #111;
+}
+
+/* ── Navbar ── */
+.pf-nav {
+    background: #0a0a0a;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    border-bottom: 1px solid #222;
+    height: 52px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.pf-logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.pf-logo span {
+    color: #1a6dff;
+}
+
+/* ── Nav tabs ── */
+.pf-nav-tabs {
+    display: flex;
+    list-style: none;
+    height: 100%;
+}
+
+.pf-nav-tabs li {
+    display: flex;
+}
+
+.pf-nav-tabs a {
+    color: #666;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+}
+
+.pf-nav-tabs a:hover {
+    color: #aaa;
+    background: rgba(255,255,255,0.02);
+}
+
+.pf-nav-tabs a.active {
+    color: #fff;
+    border-bottom: 2px solid #1a6dff;
+    background: rgba(26,109,255,0.06);
+}
+
+/* ── Right side icons ── */
+.pf-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.pf-icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #888;
+    font-size: 18px;
+    transition: all 0.15s;
+}
+
+.pf-icon-btn:hover {
+    border-color: #333;
+    color: #fff;
+    background: #1a1a1a;
+}
+
+.pf-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1a6dff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.15s;
+}
+
+.pf-avatar:hover {
+    border-color: #1a6dff;
+    filter: brightness(1.1);
+}
+
+/* ── Profile dropdown ── */
+.pf-dropdown {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background: #0d0d0d;
+    border: 1px solid #222;
+    border-radius: 10px;
+    width: 190px;
+    overflow: hidden;
+    z-index: 200;
+    display: none;
+}
+
+.pf-dropdown.open {
+    display: block;
+}
+
+.pf-dropdown-header {
+    padding: 12px 14px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.pf-dropdown-header p {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.pf-dropdown-header span {
+    font-size: 11px;
+    color: #555;
+}
+
+.pf-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #aaa;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s;
+}
+
+.pf-dropdown-item:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.pf-dropdown-item.danger {
+    color: #e74c3c;
+}
+
+.pf-dropdown-item.danger:hover {
+    background: #1a0a0a;
+}
+
+.pf-dropdown-divider {
+    border-top: 1px solid #1a1a1a;
+}
+
+/* ── Menu dropdown ── */
+.pf-menu-dropdown {
+    position: absolute;
+    top: 48px;
+    right: 48px;
+    background: #0d0d0d;
+    border: 1px solid #222;
+    border-radius: 10px;
+    width: 210px;
+    overflow: hidden;
+    z-index: 200;
+    display: none;
+}
+
+.pf-menu-dropdown.open {
+    display: block;
+}
+
+.pf-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #aaa;
+    cursor: pointer;
+    border-bottom: 1px solid #1a1a1a;
+    text-decoration: none;
+    transition: background 0.1s;
+}
+
+.pf-menu-item:last-child {
+    border-bottom: none;
+}
+
+.pf-menu-item:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.pf-menu-item-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.pf-menu-item-title {
+    font-size: 12px;
+    color: #ccc;
+    font-weight: 500;
+}
+
+.pf-menu-item-sub {
+    font-size: 10px;
+    color: #444;
+    margin-top: 2px;
+}
+
+/* ── Hero ── */
+.pf-hero {
+    background: #0d0d0d;
+    padding: 22px 24px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.pf-hero h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.pf-hero h2 span {
+    color: #1a6dff;
+}
+
+.pf-hero p {
+    font-size: 12px;
+    color: #555;
+}
+
+/* ── Stats ── */
+.pf-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 16px 24px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.pf-stat {
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+
+.pf-stat-label {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.pf-stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.pf-stat-sub {
+    font-size: 11px;
+    color: #444;
+    margin-top: 4px;
+}
+
+.pf-stat.blue .pf-stat-value { color: #1a6dff; }
+.pf-stat.red  .pf-stat-value { color: #e74c3c; }
+
+/* ── Section title ── */
+.pf-section-title {
+    font-size: 10px;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 16px 24px 8px;
+}
+
+/* ── Chart card ── */
+.chart-card {
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    padding: 18px;
+    margin: 0 24px 16px;
+}
+
+.chart-card h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chart-card h4 span {
+    font-size: 11px;
+    color: #444;
+    font-weight: 400;
+}
+
+.chart-legend {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #666;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.chart-area {
+    position: relative;
+    height: 160px;
+}
+
+/* ── Check-in grid ── */
+.check-row {
+    margin-top: 16px;
+}
+
+.check-section-label {
+    font-size: 10px;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.check-label-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    margin-bottom: 4px;
+}
+
+.check-label-row span {
+    font-size: 10px;
+    color: #444;
+    text-align: center;
+}
+
+.check-row-label {
+    font-size: 10px;
+    color: #444;
+    margin-bottom: 4px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.check-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    margin-bottom: 4px;
+}
+
+.check-cell {
+    height: 22px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.check-gym  { background: #0d1f3a; border: 1px solid #1a4080; color: #4a90e2; }
+.check-meal { background: #0d2a0d; border: 1px solid #1a5a1a; color: #27ae60; }
+.check-none { background: #111;    border: 1px solid #1a1a1a; color: #333; }
+
+/* ── Details grid ── */
+.pf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 24px 24px;
+}
+
+.pf-card {
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.pf-card h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pf-card h4 a {
+    font-size: 11px;
+    color: #1a6dff;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+/* ── Payment rows ── */
+.pf-payment-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid #141414;
+}
+
+.pf-payment-row:last-child { border-bottom: none; }
+
+.pf-payment-label {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.pf-payment-date {
+    font-size: 10px;
+    color: #444;
+    margin-top: 2px;
+}
+
+.pf-payment-amount {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.pf-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.pf-badge.paid    { background: #0a2a1a; color: #27ae60; border: 1px solid #1a4a2a; }
+.pf-badge.pending { background: #2a0a0a; color: #e74c3c; border: 1px solid #4a1a1a; }
+
+/* ── Plan items ── */
+.pf-plan-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid #141414;
+}
+
+.pf-plan-item:last-child { border-bottom: none; }
+
+.pf-plan-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    background: #111;
+    border: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.pf-plan-name {
+    font-size: 12px;
+    color: #ccc;
+    font-weight: 500;
+}
+
+.pf-plan-detail {
+    font-size: 10px;
+    color: #444;
+    margin-top: 2px;
+}
