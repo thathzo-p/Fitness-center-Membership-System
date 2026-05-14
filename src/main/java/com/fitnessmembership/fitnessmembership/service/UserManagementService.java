@@ -1,5 +1,7 @@
 package com.fitnessmembership.fitnessmembership.service;
 
+import com.fitnessmembership.fitnessmembership.model.UserManagement;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

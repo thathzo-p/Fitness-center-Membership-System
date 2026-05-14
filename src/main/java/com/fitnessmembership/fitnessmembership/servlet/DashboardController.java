@@ -1,5 +1,6 @@
 package com.fitnessmembership.fitnessmembership.servlet;
 
+import com.fitnessmembership.fitnessmembership.service.ReviewService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

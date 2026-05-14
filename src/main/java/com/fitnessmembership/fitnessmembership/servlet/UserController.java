@@ -2,6 +2,7 @@ package com.fitnessmembership.fitnessmembership.servlet;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
+import com.fitnessmembership.fitnessmembership.model.UserManagement;
 import com.fitnessmembership.fitnessmembership.service.UserManagementService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
