@@ -1,0 +1,4 @@
+PL001,Basic Workout Plan,19.99,Perfect for beginners getting started with fitness,3 Workouts / Week|Full Gym Access|Basic Equipment
+PL002,Standard Workout Plan,39.99,Ideal for those who want to take it to the next level,5 Workouts / Week|Full Gym Access|All Equipment|Progress Tracking
+PL003,Premium Workout Plan,59.99,Complete fitness solution for serious results,6 Workouts / Week|Full Gym Access|Premium Equipment|Personal Trainer Support|Progress Tracking
+PL004,Elite Workout Plan,89.99,Advanced plan for elite performance and goals,Unlimited Workouts|Full Gym Access|Premium Equipment|Personal Trainer Support|Nutrition Guidance|Progress Tracking

@@ -1,326 +1,227 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowerFit - Dashboard</title>
-    <link rel="stylesheet" href="/css/dashboard.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <title>Member Dashboard</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/dashboard.css">
 </head>
+
 <body>
 
-<div class="pf-wrap">
+<div class="sidebar" id="sidebar">
 
-    <!-- Navbar -->
-    <div class="pf-nav">
-        <span class="pf-logo">Power<span>Fit</span></span>
+    <div class="sidebar-header">
 
-        <ul class="pf-nav-tabs">
-            <li><a href="/dashboard" class="active">Dashboard</a></li>
-            <li><a href="/bookings">Bookings</a></li>
-            <li><a href="/classes">Classes</a></li>
-            <li><a href="/reviews">Reviews</a></li>
-        </ul>
+        <div class="logo">
+            Fit<span>Club</span>
+        </div>
 
-        <div class="pf-right">
+        <button class="menu-toggle"
+                onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
-            <!-- Menu icon -->
-            <div class="pf-icon-btn" id="menuBtn" title="Quick menu">
-                <i class="ti ti-layout-grid"></i>
-            </div>
+    </div>
 
-            <!-- Profile avatar -->
-            <div class="pf-avatar" id="profileBtn">
-                ${fn:toUpperCase(fn:substring(username, 0, 2))}
-            </div>
+    <ul>
 
-            <!-- Menu dropdown -->
-            <div class="pf-menu-dropdown" id="menuDropdown">
-                <a href="/payments" class="pf-menu-item">
-                    <div class="pf-menu-item-icon" style="background:#0d1f3a;">💳</div>
-                    <div>
-                        <div class="pf-menu-item-title">My Payments</div>
-                        <div class="pf-menu-item-sub">View payment history</div>
-                    </div>
-                </a>
-                <a href="/plans" class="pf-menu-item">
-                    <div class="pf-menu-item-icon" style="background:#0d2a0d;">🥗</div>
-                    <div>
-                        <div class="pf-menu-item-title">My Plans</div>
-                        <div class="pf-menu-item-sub">Meal and fitness plans</div>
-                    </div>
-                </a>
-                <a href="/progress" class="pf-menu-item">
-                    <div class="pf-menu-item-icon" style="background:#1a1a2a;">📊</div>
-                    <div>
-                        <div class="pf-menu-item-title">My Progress</div>
-                        <div class="pf-menu-item-sub">Track your progress</div>
-                    </div>
-                </a>
-                <a href="/bookings" class="pf-menu-item">
-                    <div class="pf-menu-item-icon" style="background:#2a1a0a;">📅</div>
-                    <div>
-                        <div class="pf-menu-item-title">My Bookings</div>
-                        <div class="pf-menu-item-sub">Upcoming classes</div>
-                    </div>
-                </a>
-            </div>
+        <li>
+            <a class="active" href="/dashboard">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
 
-            <!-- Profile dropdown -->
-            <div class="pf-dropdown" id="profileDropdown">
-                <div class="pf-dropdown-header">
-                    <p>${username}</p>
-                    <span>${email}</span>
+        <li>
+            <a href="/trainers">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Trainers</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/plans">
+                <i class="fa-solid fa-dumbbell"></i>
+                <span>Plans</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/booking/my">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Bookings</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/progress">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Progress</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/reviews">
+                <i class="fa-solid fa-star"></i>
+                <span>Reviews</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/payments">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>My Payments</span>
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<div class="main-content" id="mainContent">
+
+    <div class="topbar">
+
+        <div>
+            <h1>Welcome to FitClub</h1>
+            <p>Your personal fitness space, plans, trainers and progress in one place.</p>
+        </div>
+
+        <div class="profile-wrapper">
+
+            <div class="profile-box" onclick="toggleProfileMenu()">
+                <div class="profile-icon">T</div>
+
+                <div>
+                    <h4>Thathsuka</h4>
+                    <span>Member</span>
                 </div>
-                <a href="/profile" class="pf-dropdown-item">
-                    <i class="ti ti-user"></i> My Profile
-                </a>
-                <a href="/settings" class="pf-dropdown-item">
-                    <i class="ti ti-settings"></i> Settings
-                </a>
-                <div class="pf-dropdown-divider"></div>
-                <a href="/logout" class="pf-dropdown-item danger">
-                    <i class="ti ti-logout"></i> Logout
-                </a>
+            </div>
+
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="/profile">My Profile</a>
+                <a href="/plans">My Membership</a>
+                <a href="/logout" class="logout-link">Logout</a>
             </div>
 
         </div>
+
     </div>
 
-    <!-- Welcome -->
-    <div class="pf-hero">
-        <h2>Welcome back, <span>${username}</span>!</h2>
-        <p>Here's your fitness summary for this month</p>
-    </div>
+    <div class="hero-dashboard">
 
-    <!-- Stats -->
-    <div class="pf-stats">
-        <div class="pf-stat">
-            <div class="pf-stat-label">Membership</div>
-            <div class="pf-stat-value">${membership}</div>
-            <div class="pf-stat-sub">Expires ${expiryDate}</div>
-        </div>
-        <div class="pf-stat blue">
-            <div class="pf-stat-label">Gym Days This Month</div>
-            <div class="pf-stat-value">${gymDays}</div>
-            <div class="pf-stat-sub">Out of ${scheduledDays} scheduled</div>
-        </div>
-        <div class="pf-stat red">
-            <div class="pf-stat-label">Next Payment</div>
-            <div class="pf-stat-value">$${nextPayment}</div>
-            <div class="pf-stat-sub">Due ${paymentDueDate}</div>
-        </div>
-    </div>
+        <div>
+            <h2>Start Your Fitness Journey Today</h2>
 
-    <!-- Progress chart -->
-    <div class="pf-section-title">Progress overview</div>
+            <p>
+                Explore workout plans, meal plans, expert trainers and track your fitness
+                progress with FitClub.
+            </p>
 
-    <div class="chart-card">
-        <h4>Monthly Progress Chart
-            <span>Based on meal plan and gym attendance</span>
-        </h4>
-        <div class="chart-legend">
-            <div class="legend-item">
-                <div class="legend-dot" style="background:#1a6dff;"></div>
-                Overall Progress
-            </div>
-            <div class="legend-item">
-                <div class="legend-dot" style="background:#fff;"></div>
-                Meal Plan
-            </div>
-            <div class="legend-item">
-                <div class="legend-dot" style="background:#e74c3c;"></div>
-                Gym Attendance
+            <div class="hero-actions">
+                <a href="/plans">Choose Plan</a>
+                <a href="/trainers">Meet Trainers</a>
             </div>
         </div>
-        <div class="chart-area">
-            <canvas id="progressChart"></canvas>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <p>Expert Trainers</p>
+            <h2>15+</h2>
+            <span>Certified professionals</span>
         </div>
 
-        <!-- Weekly check-in -->
-        <div class="check-row">
-            <div class="check-section-label">This week — daily check-in</div>
-            <div class="check-label-row">
-                <span>Mon</span><span>Tue</span><span>Wed</span>
-                <span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+        <div class="card">
+            <p>Workout Plans</p>
+            <h2>20+</h2>
+            <span>For every fitness goal</span>
+        </div>
+
+        <div class="card">
+            <p>Happy Members</p>
+            <h2>2,450+</h2>
+            <span>Growing fitness community</span>
+        </div>
+
+        <div class="card">
+            <p>Average Rating</p>
+            <h2>4.9</h2>
+            <span>Based on member reviews</span>
+        </div>
+
+    </div>
+
+    <div class="dashboard-grid">
+
+        <div class="activity-card">
+            <h2>Recommended For You</h2>
+
+            <div class="activity">
+                <strong>Premium Workout Plan</strong>
+                <span>Best for strength, fat loss and progress tracking.</span>
             </div>
-            <div class="check-row-label">Gym</div>
-            <div class="check-grid" id="gymGrid"></div>
-            <div class="check-row-label">Meal plan</div>
-            <div class="check-grid" id="mealGrid"></div>
-        </div>
-    </div>
 
-    <!-- Details -->
-    <div class="pf-section-title">Your details</div>
+            <div class="activity">
+                <strong>Muscle Gain Meal Plan</strong>
+                <span>High protein diet plan for better results.</span>
+            </div>
 
-    <div class="pf-grid">
+            <div class="activity">
+                <strong>Trainer: Mike Johnson</strong>
+                <span>Strength training specialist with 4.9 rating.</span>
+            </div>
 
-        <!-- Recent payments -->
-        <div class="pf-card">
-            <h4>Recent Payments <a href="/payments">View all</a></h4>
-            <c:choose>
-                <c:when test="${not empty recentPayments}">
-                    <c:forEach var="payment" items="${recentPayments}">
-                        <div class="pf-payment-row">
-                            <div>
-                                <div class="pf-payment-label">${payment.description}</div>
-                                <div class="pf-payment-date">${payment.date}</div>
-                            </div>
-                            <div style="text-align:right;">
-                                <div class="pf-payment-amount">$${payment.amount}</div>
-                                <c:choose>
-                                    <c:when test="${payment.status == 'Paid'}">
-                                        <span class="pf-badge paid">${payment.status}</span>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <span class="pf-badge pending">${payment.status}</span>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </c:when>
-                <c:otherwise>
-                    <p style="color:#444; font-size:12px;">No payments yet</p>
-                </c:otherwise>
-            </c:choose>
         </div>
 
-        <!-- My plans -->
-        <div class="pf-card">
-            <h4>My Plans <a href="/plans">View all</a></h4>
-            <c:choose>
-                <c:when test="${not empty myPlans}">
-                    <c:forEach var="plan" items="${myPlans}">
-                        <div class="pf-plan-item">
-                            <div class="pf-plan-icon">${plan.icon}</div>
-                            <div>
-                                <div class="pf-plan-name">${plan.name}</div>
-                                <div class="pf-plan-detail">${plan.detail}</div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </c:when>
-                <c:otherwise>
-                    <p style="color:#444; font-size:12px;">No plans yet</p>
-                </c:otherwise>
-            </c:choose>
+        <div class="activity-card">
+            <h2>Latest Reviews</h2>
+
+            <div class="activity">
+                <strong>Excellent trainers</strong>
+                <span>The trainers are friendly and professional.</span>
+            </div>
+
+            <div class="activity">
+                <strong>Great equipment</strong>
+                <span>Modern gym machines and clean environment.</span>
+            </div>
+
+            <div class="activity">
+                <strong>Best plans</strong>
+                <span>Workout and meal plans helped me improve fast.</span>
+            </div>
+
         </div>
 
     </div>
+
+    <div class="quick-actions">
+
+        <a href="/trainers">View Trainers</a>
+        <a href="/plans">Workout Plans</a>
+        <a href="/plans">Meal Plans</a>
+        <a href="/payments/portal">Make Payment</a>
+
+    </div>
+
 </div>
 
 <script>
-    // Progress chart
-    const ctx = document.getElementById('progressChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-            datasets: [
-                {
-                    label: 'Overall Progress',
-                    data: [45, 58, 70, 82],
-                    borderColor: '#1a6dff',
-                    backgroundColor: 'rgba(26,109,255,0.07)',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#1a6dff',
-                    pointRadius: 4,
-                    tension: 0.4,
-                    fill: true
-                },
-                {
-                    label: 'Meal Plan',
-                    data: [60, 65, 75, 80],
-                    borderColor: '#ffffff',
-                    backgroundColor: 'transparent',
-                    borderWidth: 1.5,
-                    pointBackgroundColor: '#fff',
-                    pointRadius: 3,
-                    tension: 0.4,
-                    borderDash: [5, 4]
-                },
-                {
-                    label: 'Gym Attendance',
-                    data: [30, 50, 62, 78],
-                    borderColor: '#e74c3c',
-                    backgroundColor: 'transparent',
-                    borderWidth: 1.5,
-                    pointBackgroundColor: '#e74c3c',
-                    pointRadius: 3,
-                    tension: 0.4,
-                    borderDash: [2, 3]
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    backgroundColor: '#0d0d0d',
-                    titleColor: '#fff',
-                    bodyColor: '#888',
-                    borderColor: '#222',
-                    borderWidth: 1
-                }
-            },
-            scales: {
-                x: {
-                    grid: { color: '#141414' },
-                    ticks: { color: '#444', font: { size: 10 } }
-                },
-                y: {
-                    min: 0, max: 100,
-                    grid: { color: '#141414' },
-                    ticks: {
-                        color: '#444',
-                        font: { size: 10 },
-                        callback: function(v) { return v + '%'; }
-                    }
-                }
-            }
-        }
-    });
-
-    // Check-in grids
-    const gymDays  = [true, false, true, true, false, true, false];
-    const mealDays = [true, true, true, false, true, true, false];
-
-    function renderGrid(elementId, data, presentClass) {
-        const grid = document.getElementById(elementId);
-        data.forEach(function(day) {
-            const cell = document.createElement('div');
-            cell.className = 'check-cell ' + (day ? presentClass : 'check-none');
-            cell.textContent = day ? '✓' : '–';
-            grid.appendChild(cell);
-        });
+    function toggleSidebar(){
+        document.getElementById("sidebar").classList.toggle("collapsed");
+        document.getElementById("mainContent").classList.toggle("expand-content");
     }
 
-    renderGrid('gymGrid',  gymDays,  'check-gym');
-    renderGrid('mealGrid', mealDays, 'check-meal');
-
-    // Dropdowns
-    document.getElementById('profileBtn').onclick = function(e) {
-        e.stopPropagation();
-        document.getElementById('profileDropdown').classList.toggle('open');
-        document.getElementById('menuDropdown').classList.remove('open');
-    };
-    document.getElementById('menuBtn').onclick = function(e) {
-        e.stopPropagation();
-        document.getElementById('menuDropdown').classList.toggle('open');
-        document.getElementById('profileDropdown').classList.remove('open');
-    };
-    document.addEventListener('click', function() {
-        document.getElementById('profileDropdown').classList.remove('open');
-        document.getElementById('menuDropdown').classList.remove('open');
-    });
+    function toggleProfileMenu(){
+        document.getElementById("profileDropdown").classList.toggle("show");
+    }
 </script>
 
 </body>

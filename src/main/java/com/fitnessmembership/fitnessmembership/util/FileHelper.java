@@ -1,5 +1,6 @@
 package com.fitnessmembership.fitnessmembership.util;
 
+import com.fitnessmembership.fitnessmembership.util.FileHelper;
 import com.fitnessmembership.fitnessmembership.model.User;
 import java.io.*;
 import java.util.ArrayList;
