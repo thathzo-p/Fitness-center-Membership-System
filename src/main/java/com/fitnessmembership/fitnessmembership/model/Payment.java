@@ -3,7 +3,7 @@ package com.fitnessmembership.fitnessmembership.model;
 public class Payment {
 
     private String id;
-    private String userId;
+    private String userId; // this will generate by the system
     private String amount;
     private String description;
     private String date;
