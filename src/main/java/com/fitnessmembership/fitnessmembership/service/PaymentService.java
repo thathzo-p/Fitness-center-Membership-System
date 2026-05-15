@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class PaymentService {
 
-    private static final String FILE_PATH = "data/payments.txt";
+    private static final String FILE_PATH = "data/payments.txt"; // store data in the text file
 
     // CREATE — add new payment
     public void addPayment(String userId, String amount, String description, String date) {
