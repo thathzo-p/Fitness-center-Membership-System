@@ -525,3 +525,41 @@ body{
         grid-template-columns:1fr;
     }
 }
+
+.dashboard-progress-preview{
+    margin-top:40px;
+}
+
+.progress-preview-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.progress-preview-header h2{
+    font-size:32px;
+    color:white;
+}
+
+.progress-preview-header a{
+    color:#ff3131;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.dashboard-progress-preview .progress-summary{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.dashboard-charts{
+    grid-template-columns:1fr 1fr;
+}
+
+.dashboard-charts .chart-card{
+    height:360px;
+}
+
+.dashboard-charts canvas{
+    max-height:260px !important;
+}

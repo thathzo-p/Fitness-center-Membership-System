@@ -3,11 +3,15 @@
 <head>
     <title>Member Dashboard</title>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/css/dashboard.css">
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/progress.css">
 </head>
 
 <body>
@@ -158,6 +162,53 @@
 
     </div>
 
+    <div class="dashboard-progress-preview">
+
+            <div class="progress-preview-header">
+                <h2>Your Fitness Progress</h2>
+                <a href="/progress">View Full Progress</a>
+            </div>
+
+            <div class="progress-summary">
+                <div class="summary-card">
+                    <span>Current Weight</span>
+                    <h2>72.0 kg</h2>
+                    <p>Latest entry</p>
+                </div>
+
+                <div class="summary-card">
+                    <span>BMI Score</span>
+                    <h2>23.51</h2>
+                    <p class="green">Healthy Range</p>
+                </div>
+
+                <div class="summary-card">
+                    <span>Gym Days</span>
+                    <h2>12</h2>
+                    <p class="green">This month</p>
+                </div>
+
+                <div class="summary-card glow">
+                    <span>Gym Streak</span>
+                    <h2>7 Days</h2>
+                    <p>Keep it up!</p>
+                </div>
+            </div>
+
+            <div class="chart-grid dashboard-charts">
+                <div class="chart-card">
+                    <h2>Weight Progress</h2>
+                    <canvas id="dashWeightChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h2>Gym Attendance</h2>
+                    <canvas id="dashGymChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
     <div class="dashboard-grid">
 
         <div class="activity-card">
@@ -202,15 +253,6 @@
 
     </div>
 
-    <div class="quick-actions">
-
-        <a href="/trainers">View Trainers</a>
-        <a href="/plans">Workout Plans</a>
-        <a href="/plans">Meal Plans</a>
-        <a href="/payments/portal">Make Payment</a>
-
-    </div>
-
 </div>
 
 <script>
@@ -222,6 +264,41 @@
     function toggleProfileMenu(){
         document.getElementById("profileDropdown").classList.toggle("show");
     }
+
+    new Chart(document.getElementById("dashWeightChart"), {
+        type: "line",
+        data: {
+            labels: ["Feb", "Mar", "Apr", "May"],
+            datasets: [{
+                label: "Weight",
+                data: [76, 75, 73.5, 72],
+                borderColor: "#ff3131",
+                backgroundColor: "rgba(255,49,49,0.2)",
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    new Chart(document.getElementById("dashGymChart"), {
+        type: "bar",
+        data: {
+            labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+            datasets: [{
+                label: "Gym Days",
+                data: [3, 4, 2, 3],
+                backgroundColor: "#ff3131"
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
 </script>
 
 </body>

@@ -28,6 +28,11 @@ public class TrainerHireController {
 
         hireService.hireTrainer(memberId, trainerName, packageType);
 
-        return "redirect:/booking/my";
+        String amount = packageType.equals("Weekly") ? "100" : "250";
+
+        return "redirect:/payments/portal?plan=Trainer Hire - "
+                + trainerName
+                + "&amount="
+                + amount;
     }
 }

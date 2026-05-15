@@ -2,6 +2,7 @@
     String uri = request.getRequestURI();
 %>
 
+
 <div class="sidebar" id="sidebar">
 
     <div class="sidebar-header">

@@ -27,22 +27,44 @@ public class Booking {
 
     // ─── Getters & Setters ───────────────────────────────────────────────────────
 
-    public String getBookingId()               { return bookingId; }
-    public void   setBookingId(String id)      { this.bookingId = id; }
+    public String getBookingId()               {
+        return bookingId;
+    }
+    public void   setBookingId(String id)      {
+        this.bookingId = id;
+    }
 
-    public String getUserId()                  { return userId; }
-    public void   setUserId(String userId)     { this.userId = userId; }
+    public String getUserId()                  {
+        return userId;
+    }
+    public void   setUserId(String userId)     {
+        this.userId = userId;
+    }
 
-    public String getMemberName()              { return memberName; }
-    public void   setMemberName(String name)   { this.memberName = name; }
+    public String getMemberName()              {
+        return memberName;
+    }
+    public void   setMemberName(String name)   {
+        this.memberName = name;
+    }
 
-    public String getFitnessClass()            { return fitnessClass; }
-    public void   setFitnessClass(String fc)   { this.fitnessClass = fc; }
+    public String getFitnessClass()            {
+        return fitnessClass;
+    }
+    public void   setFitnessClass(String fc)   {
+        this.fitnessClass = fc;
+    }
 
-    public String getDate()                    { return date; }
-    public void   setDate(String date)         { this.date = date; }
+    public String getDate()                    {
+        return date;
+    }
+    public void   setDate(String date)         {
+        this.date = date;
+    }
 
-    public String getTimeSlot()                { return timeSlot; }
+    public String getTimeSlot()                {
+        return timeSlot;
+    }
     public void   setTimeSlot(String slot)     { this.timeSlot = slot; }
 
     public String getStatus()                  { return status; }

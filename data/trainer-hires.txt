@@ -1,2 +1,8 @@
 Hf53980|U1778609383002|Sarah Williams|Weekly|100|ACTIVE
 Hb5960c|U1778609383002|Mike Johnson|Weekly|100|ACTIVE
+Ha8ee22|GUEST|Mike Johnson|Weekly|100|ACTIVE
+Ha4772e|GUEST|Mike Johnson|Weekly|100|ACTIVE
+H2f5af4|GUEST|Mike Johnson|Weekly|100|ACTIVE
+H9b5786|GUEST|Mike Johnson|Weekly|100|ACTIVE
+Hed89b4|GUEST|Mike Johnson|Weekly|100|ACTIVE
+H56d092|GUEST|Mike Johnson|Weekly|100|ACTIVE

@@ -206,3 +206,175 @@
         gap:20px;
     }
 }
+.progress-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.progress-header h1{
+    font-size:52px;
+    color:white;
+}
+
+.progress-header p{
+    color:#b8b8b8;
+    font-size:18px;
+}
+
+.add-progress-btn{
+    background:#ff3131;
+    color:white;
+    text-decoration:none;
+    padding:16px 30px;
+    border-radius:18px;
+    font-weight:800;
+}
+
+.progress-summary{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    margin-bottom:35px;
+}
+
+.summary-card{
+    background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:26px;
+    padding:28px;
+}
+
+.summary-card span{
+    color:#b8b8b8;
+}
+
+.summary-card h2{
+    color:white;
+    font-size:38px;
+    margin:14px 0;
+}
+
+.summary-card p{
+    color:#ff3131;
+}
+
+.summary-card .green{
+    color:#22c55e;
+}
+
+.summary-card.glow{
+    box-shadow:0 0 35px rgba(255,49,49,.28);
+}
+
+.chart-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:28px;
+    margin-bottom:40px;
+}
+
+.chart-card{
+    background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:28px;
+    padding:30px;
+}
+
+.chart-card h2{
+    color:white;
+    margin-bottom:25px;
+}
+
+.history-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.history-header h2{
+    font-size:36px;
+    color:white;
+}
+
+.history-header p{
+    color:#9ca3af;
+    margin-top:6px;
+}
+
+.history-table{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.history-row{
+    display:grid;
+    grid-template-columns:1.1fr 1fr 1fr .8fr .9fr 1.5fr 1.3fr;
+    align-items:center;
+    gap:18px;
+    padding:20px 22px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.045);
+    border:1px solid rgba(255,255,255,0.06);
+    color:#e5e7eb;
+}
+
+.history-head{
+    background:transparent;
+    border:none;
+    color:#ff3131;
+    font-weight:800;
+    padding-bottom:8px;
+}
+
+.bmi-pill{
+    background:#14532d;
+    color:#22c55e;
+    padding:8px 14px;
+    border-radius:999px;
+}
+
+.history-actions{
+    display:flex;
+    gap:10px;
+}
+
+.history-actions a{
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    color:white;
+    padding:10px 14px;
+    border-radius:12px;
+    font-weight:700;
+}
+
+.edit-progress{
+    background:#2563eb;
+}
+
+.delete-progress{
+    background:#dc2626;
+}
+
+@media(max-width:1000px){
+    .history-row{
+        grid-template-columns:1fr;
+    }
+
+    .history-head{
+        display:none;
+    }
+}
+
+.chart-card{
+    height: 360px;
+}
+
+.chart-card canvas{
+    height: 260px !important;
+    max-height: 260px !important;
+}

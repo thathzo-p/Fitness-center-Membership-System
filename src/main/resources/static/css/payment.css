@@ -258,28 +258,6 @@ form button:hover{
         transform:translateY(0px);
     }
 }
-/* CHART */
-
-.chart-section{
-
-    margin-bottom:35px;
-}
-
-.chart-card{
-
-    background:rgba(255,255,255,0.05);
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    border-radius:25px;
-
-    padding:30px;
-}
-
-.chart-card h2{
-
-    margin-bottom:25px;
-}
 
 /* PAYMENT PORTAL */
 
@@ -417,10 +395,15 @@ form button:hover{
 }
 
 .row{
-
-    display:flex;
-
+    display:grid;
+    grid-template-columns:1fr 1fr;
     gap:20px;
+    width:100%;
+}
+
+.row input{
+    width:100%;
+    box-sizing:border-box;
 }
 
 .payment-right button{
@@ -593,3 +576,4 @@ form button:hover{
     border-radius:18px;
     font-weight:700;
 }
+

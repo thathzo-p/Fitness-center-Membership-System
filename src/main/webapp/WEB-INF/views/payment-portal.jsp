@@ -105,10 +105,7 @@ function toggleSidebar(){
                 Payment Details
             </h2>
 
-            <input type="text"
-                   name="userId"
-                   placeholder="User ID"
-                   required>
+
 
             <input type="text"
                    id="cardNumber"
@@ -218,6 +215,19 @@ document.getElementById(
         'successPopup'
     ).style.display='block';
 });
+
+ const cardInput = document.getElementById("cardNumber");
+
+    cardInput.addEventListener("input", function () {
+
+        let value = this.value.replace(/\D/g, "");
+
+        value = value.substring(0, 16);
+
+        value = value.replace(/(.{4})/g, "$1 ").trim();
+
+        this.value = value;
+    });
 
 </script>
 

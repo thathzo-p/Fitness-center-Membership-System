@@ -341,3 +341,59 @@ body{
 .gallery-arrow.right{
     right:45px;
 }
+
+.contact-section{
+    padding:90px 10%;
+    background:#000;
+}
+
+.contact-box{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:40px;
+    background:#111;
+    padding:45px;
+    border-radius:28px;
+}
+
+.contact-info h3{
+    color:white;
+    font-size:28px;
+    margin-bottom:25px;
+}
+
+.contact-info p{
+    color:#bdbdbd;
+    margin-bottom:18px;
+}
+
+.contact-form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    padding:17px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    background:#1b1b1b;
+    color:white;
+}
+
+.contact-form textarea{
+    min-height:130px;
+    resize:none;
+}
+
+.contact-form button{
+    background:#ff3131;
+    color:white;
+    border:none;
+    padding:17px;
+    border-radius:18px;
+    font-weight:700;
+    cursor:pointer;
+}

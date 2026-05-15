@@ -83,8 +83,7 @@
 
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="/reviews">Reviews</a></li>
-        <li><a href="reviews">Reviews</a></li>
-        <li><a href="contact">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
 
     <div class="nav-buttons">
@@ -130,18 +129,12 @@
 
         <div class="hero-buttons">
 
-            <a href="#plans"
-               class="primary-btn">
-
+            <a href="${pageContext.request.contextPath}/login" class="primary-btn">
                 Explore Plans
-
             </a>
 
-            <a href="/dashboard"
-               class="secondary-btn">
-
+            <a href="${pageContext.request.contextPath}/login" class="secondary-btn">
                 Start Training
-
             </a>
 
         </div>
@@ -261,6 +254,36 @@
         <img src="${pageContext.request.contextPath}/images/gym1.jpg" onclick="openGallery(6)">
         <img src="${pageContext.request.contextPath}/images/gym2.jpg" onclick="openGallery(7)">
         <img src="${pageContext.request.contextPath}/images/gym3.jpg" onclick="openGallery(8)">
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact-section" id="contact">
+
+    <div class="section-title">
+        <h4>CONTACT US</h4>
+        <h2>Get In Touch</h2>
+    </div>
+
+    <div class="contact-box">
+
+        <div class="contact-info">
+            <h3>FitClub Fitness Center</h3>
+            <p>📍 Colombo, Sri Lanka</p>
+            <p>📞 +94 77 123 4567</p>
+            <p>✉ fitclub@gmail.com</p>
+            <p>🕒 Mon - Sat: 6.00 AM - 10.00 PM</p>
+        </div>
+
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Your Message"></textarea>
+            <button type="button">Send Message</button>
+        </form>
 
     </div>
 
