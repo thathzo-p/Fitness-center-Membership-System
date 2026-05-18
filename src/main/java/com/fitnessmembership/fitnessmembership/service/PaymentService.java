@@ -35,10 +35,7 @@ public class PaymentService {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 6) {
-                    payments.add(new Payment(
-                            parts[0], parts[1], parts[2],
-                            parts[3], parts[4], parts[5]
-                    ));
+                    payments.add(new Payment(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]));
                 }
             }
         } catch (IOException e) {
@@ -79,12 +76,7 @@ public class PaymentService {
                     p.setDescription(description);
                     p.setStatus(status);
                 }
-                writer.write(p.getId() + "," +
-                        p.getUserId() + "," +
-                        p.getAmount() + "," +
-                        p.getDescription() + "," +
-                        p.getDate() + "," +
-                        p.getStatus());
+                writer.write(p.getId() + "," + p.getUserId() + "," + p.getAmount() + "," + p.getDescription() + "," + p.getDate() + "," + p.getStatus());
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -105,13 +97,7 @@ public class PaymentService {
                     p.setStatus("Paid");
                 }
 
-                writer.write(p.getId() + "," +
-                        p.getUserId() + "," +
-                        p.getAmount() + "," +
-                        p.getDescription() + "," +
-                        p.getDate() + "," +
-                        p.getStatus());
-
+                writer.write(p.getId() + "," + p.getUserId() + "," + p.getAmount() + "," + p.getDescription() + "," + p.getDate() + "," + p.getStatus());
                 writer.newLine();
             }
 
@@ -126,12 +112,7 @@ public class PaymentService {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) {
             for (Payment p : payments) {
                 if (!p.getId().equals(id)) {
-                    writer.write(p.getId() + "," +
-                            p.getUserId() + "," +
-                            p.getAmount() + "," +
-                            p.getDescription() + "," +
-                            p.getDate() + "," +
-                            p.getStatus());
+                    writer.write(p.getId() + "," + p.getUserId() + "," + p.getAmount() + "," + p.getDescription() + "," + p.getDate() + "," + p.getStatus());
                     writer.newLine();
                 }
             }
