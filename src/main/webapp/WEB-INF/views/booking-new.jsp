@@ -60,12 +60,7 @@
     </div>
 
 </div>
-<script>
-    function toggleSidebar(){
-        document.getElementById("sidebar").classList.toggle("collapsed");
-        document.getElementById("mainContent").classList.toggle("expand-content");
-    }
-</script>
+
 
 </body>
 </html>
