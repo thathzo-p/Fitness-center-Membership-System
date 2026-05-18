@@ -10,21 +10,12 @@ public class BookingService {
 
     private static final String FILE_PATH = "data/bookings.txt";
 
-    public boolean createBooking(String userId, String memberName,
-                                 String fitnessClass, String date, String timeSlot) {
+    public boolean createBooking(String userId, String memberName, String fitnessClass, String date, String timeSlot) {
 
         String bookingId = "BK" + LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 
-        Booking booking = new Booking(
-                bookingId,
-                userId,
-                memberName,
-                fitnessClass,
-                date,
-                timeSlot,
-                "CONFIRMED"
-        );
+        Booking booking = new Booking(bookingId, userId,memberName,fitnessClass,date,timeSlot, "CONFIRMED");
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
             writer.write(booking.toString());
@@ -49,15 +40,7 @@ public class BookingService {
                 String[] data = line.split("\\|");
 
                 if (data.length == 7) {
-                    bookings.add(new Booking(
-                            data[0],
-                            data[1],
-                            data[2],
-                            data[3],
-                            data[4],
-                            data[5],
-                            data[6]
-                    ));
+                    bookings.add(new Booking(data[0], data[1], data[2], data[3], data[4], data[5], data[6]));
                 }
             }
 
@@ -79,8 +62,7 @@ public class BookingService {
         return null;
     }
 
-    public boolean updateBooking(String bookingId, String fitnessClass,
-                                 String date, String timeSlot) {
+    public boolean updateBooking(String bookingId, String fitnessClass, String date, String timeSlot) {
 
         List<Booking> bookings = getAllBookings();
         boolean found = false;
