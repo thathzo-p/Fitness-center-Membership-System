@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class PaymentService {
 
-    private static final String FILE_PATH = "data/payments.txt";
+    private static final String FILE_PATH = "data/payments.txt"; // store data in the text file
 
     // CREATE — add new payment
     public void addPayment(String userId, String amount, String description, String date) {
@@ -61,8 +61,7 @@ public class PaymentService {
     }
 
     // UPDATE — update payment status
-    public void updatePayment(String id, String amount,
-                              String description, String status) {
+    public void updatePayment(String id, String amount, String description, String status) {
         List<Payment> payments = getAllPayments();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) {
             for (Payment p : payments) {
@@ -76,6 +75,28 @@ public class PaymentService {
             }
         } catch (IOException e) {
             System.out.println("Error updating payment: " + e.getMessage());
+        }
+    }
+
+    // APPROVE — change payment status from Pending to Paid
+    public void approvePayment(String id) {
+
+        List<Payment> payments = getAllPayments();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) {
+
+            for (Payment p : payments) {
+
+                if (p.getId().equals(id)) {
+                    p.setStatus("Paid");
+                }
+
+                writer.write(p.getId() + "," + p.getUserId() + "," + p.getAmount() + "," + p.getDescription() + "," + p.getDate() + "," + p.getStatus());
+                writer.newLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error approving payment: " + e.getMessage());
         }
     }
 
