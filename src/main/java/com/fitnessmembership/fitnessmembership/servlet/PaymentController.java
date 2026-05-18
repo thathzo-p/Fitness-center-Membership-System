@@ -1,5 +1,7 @@
 package com.fitnessmembership.fitnessmembership.servlet;
 
+import com.fitnessmembership.fitnessmembership.model.UserManagement;
+import jakarta.servlet.http.HttpSession;
 import com.fitnessmembership.fitnessmembership.model.Payment;
 import com.fitnessmembership.fitnessmembership.service.PaymentService;
 import org.springframework.stereotype.Controller;
@@ -31,8 +33,25 @@ public class PaymentController {
 
     // CREATE — submit new payment
     @PostMapping("/add")
-    public String addPayment(@RequestParam String userId, @RequestParam String amount, @RequestParam String description, @RequestParam String date) {
-        paymentService.addPayment(userId, amount, description, date);
+    public String addPayment(@RequestParam String amount,
+                             @RequestParam String description,
+                             @RequestParam String date,
+                             HttpSession session) {
+
+        UserManagement user =
+                (UserManagement) session.getAttribute("loggedUser");
+
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        paymentService.addPayment(
+                user.getUserId(),
+                amount,
+                description,
+                date
+        );
+
         return "redirect:/payments";
     }
 
@@ -52,15 +71,17 @@ public class PaymentController {
     }
 
     // DELETE — delete payment
-    @GetMapping("/delete/{id}")
-    public String deletePayment(@PathVariable String id) {
-        paymentService.deletePayment(id);
-        return "redirect:/payments";
-    }
-
-    //PAYMENTS
     @GetMapping("/portal")
-    public String paymentPortal(){
+    public String paymentPortal(@RequestParam(required = false) String plan,
+                                @RequestParam(required = false) String amount,
+                                Model model) {
+
+        if (plan == null || amount == null) {
+            return "redirect:/plans";
+        }
+
+        model.addAttribute("description", plan);
+        model.addAttribute("selectedAmount", amount);
 
         return "payment-portal";
     }
