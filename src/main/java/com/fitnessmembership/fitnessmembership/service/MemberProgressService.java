@@ -31,8 +31,7 @@ public class MemberProgressService {
 
         List<MemberProgress> progressList = new ArrayList<>();
 
-        try (BufferedReader reader =
-                     new BufferedReader(new FileReader(FILE_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 
             String line;
 
