@@ -9,10 +9,11 @@ public class Payment {
     private String date;
     private String status; // Paid or Pending
 
-    public Payment() {}
+    public Payment () {
+    }
 
-    public Payment(String id, String userId, String amount,
-                   String description, String date, String status) {
+    public Payment (String id, String userId, String amount,
+                    String description, String date, String status) {
         this.id = id;
         this.userId = userId;
         this.amount = amount;
@@ -22,45 +23,51 @@ public class Payment {
     }
 
     // Getters and Setters
-    public String getId() {
+    public String getId () {
         return id;
     }
-    public void setId(String id) {
+
+    public void setId (String id) {
         this.id = id;
     }
 
-    public String getUserId() {
+    public String getUserId () {
         return userId;
     }
-    public void setUserId(String userId) {
+
+    public void setUserId (String userId) {
         this.userId = userId;
     }
 
-    public String getAmount() {
+    public String getAmount () {
         return amount;
     }
-    public void setAmount(String amount) {
+
+    public void setAmount (String amount) {
         this.amount = amount;
     }
 
-    public String getDescription() {
+    public String getDescription () {
         return description;
     }
-    public void setDescription(String description) {
+
+    public void setDescription (String description) {
         this.description = description;
     }
 
-    public String getDate() {
+    public String getDate () {
         return date;
     }
-    public void setDate(String date) {
+
+    public void setDate (String date) {
         this.date = date;
     }
 
-    public String getStatus() {
+    public String getStatus () {
         return status;
     }
-    public void setStatus(String status) {
+
+    public void setStatus (String status) {
         this.status = status;
     }
 }

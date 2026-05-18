@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <script>
+        if (localStorage.getItem("sidebarCollapsed") === "true") {
+            document.documentElement.classList.add("sidebar-is-collapsed");
+        }
+    </script>
     <title>Reviews</title>
 
     <link rel="stylesheet"
@@ -54,16 +60,6 @@
                 </div>
             </div>
 
-            <div class="stars">
-                <%
-                    for(int i = 1; i <= r.getRating(); i++) {
-                %>
-                    ★
-                <%
-                    }
-                %>
-            </div>
-
             <p><%= r.getComment() %></p>
 
         </div>
@@ -86,13 +82,6 @@
     </div>
 
 </div>
-
-<script>
-    function toggleSidebar(){
-        document.getElementById("sidebar").classList.toggle("collapsed");
-        document.getElementById("mainContent").classList.toggle("expand-content");
-    }
-</script>
 
 </body>
 </html>

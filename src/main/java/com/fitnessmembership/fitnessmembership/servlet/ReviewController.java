@@ -29,7 +29,15 @@ public class ReviewController {
     }
 
     @GetMapping("/add")
-    public String addReviewPage() {
+    public String addReviewPage(HttpSession session) {
+
+        UserManagement user =
+                (UserManagement) session.getAttribute("loggedUser");
+
+        if (user == null) {
+            return "redirect:/login";
+        }
+
         return "review-add";
     }
 
@@ -41,11 +49,11 @@ public class ReviewController {
         UserManagement user =
                 (UserManagement) session.getAttribute("loggedUser");
 
-        String memberName = "Guest";
-
-        if (user != null) {
-            memberName = user.getFullName();
+        if (user == null) {
+            return "redirect:/login";
         }
+
+        String memberName = user.getFullName();
 
         reviewService.addReview(memberName, rating, comment);
 
@@ -53,7 +61,25 @@ public class ReviewController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteReview(@PathVariable String id) {
+    public String deleteReview(@PathVariable String id,
+                               HttpSession session) {
+
+        UserManagement user =
+                (UserManagement) session.getAttribute("loggedUser");
+
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        Review review = reviewService.getReviewById(id);
+
+        if (review == null) {
+            return "redirect:/reviews";
+        }
+
+        if (!review.getMemberName().equals(user.getFullName())) {
+            return "redirect:/reviews";
+        }
 
         reviewService.deleteReview(id);
 

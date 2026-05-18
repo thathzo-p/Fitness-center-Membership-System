@@ -380,7 +380,8 @@
 }
 
 .trainer-card{
-    max-width:none;
+    width:270px;
+    max-width:270px;
 }
 
 @media(max-width:1400px){

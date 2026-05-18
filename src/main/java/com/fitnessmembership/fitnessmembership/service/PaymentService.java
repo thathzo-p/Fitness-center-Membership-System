@@ -92,6 +92,34 @@ public class PaymentService {
         }
     }
 
+    // APPROVE — change payment status from Pending to Paid
+    public void approvePayment(String id) {
+
+        List<Payment> payments = getAllPayments();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) {
+
+            for (Payment p : payments) {
+
+                if (p.getId().equals(id)) {
+                    p.setStatus("Paid");
+                }
+
+                writer.write(p.getId() + "," +
+                        p.getUserId() + "," +
+                        p.getAmount() + "," +
+                        p.getDescription() + "," +
+                        p.getDate() + "," +
+                        p.getStatus());
+
+                writer.newLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error approving payment: " + e.getMessage());
+        }
+    }
+
     // DELETE — remove payment by id
     public void deletePayment(String id) {
         List<Payment> payments = getAllPayments();

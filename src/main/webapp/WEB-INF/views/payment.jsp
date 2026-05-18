@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <script>
+        if (localStorage.getItem("sidebarCollapsed") === "true") {
+            document.documentElement.classList.add("sidebar-is-collapsed");
+        }
+    </script>
     <title>My Payments</title>
 
     <link rel="stylesheet"
@@ -91,13 +97,6 @@
     </div>
 
 </div>
-
-<script>
-    function toggleSidebar(){
-        document.getElementById("sidebar").classList.toggle("collapsed");
-        document.getElementById("mainContent").classList.toggle("expand-content");
-    }
-</script>
 
 </body>
 </html>

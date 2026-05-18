@@ -23,7 +23,7 @@ public class TrainerHireService {
                 trainerName,
                 packageType,
                 price,
-                "ACTIVE"
+                "PENDING"
         );
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
@@ -46,7 +46,9 @@ public class TrainerHireService {
 
                 String[] parts = line.split("\\|");
 
-                if (parts.length == 6 && parts[1].equals(memberId)) {
+                if (parts.length == 6
+                        && parts[1].equals(memberId)
+                        && parts[5].equalsIgnoreCase("ACTIVE")) {
                     hires.add(new TrainerHire(
                             parts[0], parts[1], parts[2],
                             parts[3], parts[4], parts[5]
@@ -59,5 +61,49 @@ public class TrainerHireService {
         }
 
         return hires;
+    }
+    public void activateTrainerHire(String memberId, String trainerName) {
+
+        List<TrainerHire> hires = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+
+                String[] parts = line.split("\\|");
+
+                if (parts.length == 6) {
+                    TrainerHire hire = new TrainerHire(
+                            parts[0], parts[1], parts[2],
+                            parts[3], parts[4], parts[5]
+                    );
+
+                    if (hire.getMemberId().equals(memberId)
+                            && hire.getTrainerName().equals(trainerName)
+                            && hire.getStatus().equalsIgnoreCase("PENDING")) {
+
+                        hire.setStatus("ACTIVE");
+                    }
+
+                    hires.add(hire);
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error reading trainer hires: " + e.getMessage());
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) {
+
+            for (TrainerHire hire : hires) {
+                writer.write(hire.toString());
+                writer.newLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error updating trainer hire: " + e.getMessage());
+        }
     }
 }

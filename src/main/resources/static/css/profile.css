@@ -71,3 +71,10 @@
     text-decoration:none;
     font-weight:700;
 }
+.profile-page-wrapper{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+}

@@ -1,2 +1,4 @@
 thathzo,Thathsuka,thathsuka.tm@gmail.com,MEMBER
-U1778609383002,Thathsuka Mudannayaka,thathzo,2004-02-16,thathsuka.tm@gmail.com,+94,0772177025,Female,nimuthu,MEMBER
+U1778609383002,Thathsuka Mudannayaka,thathzo,2004-02-16,thathsuka.tm@gmail.com,+94,0772177025,Male,nimuthu,MEMBER
+
+UADMIN,FitClub Admin,admin,2000-01-01,admin@fitclub.com,+94,771234567,Other,admin123,ADMIN

@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/booking.css">
+
 </head>
 
 <body>
@@ -60,12 +61,6 @@
     </div>
 
 </div>
-<script>
-    function toggleSidebar(){
-        document.getElementById("sidebar").classList.toggle("collapsed");
-        document.getElementById("mainContent").classList.toggle("expand-content");
-    }
-</script>
 
 </body>
 </html>

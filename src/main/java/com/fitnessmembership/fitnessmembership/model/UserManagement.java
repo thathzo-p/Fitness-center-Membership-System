@@ -16,10 +16,7 @@ public class UserManagement {
     public UserManagement() {}
 
 
-    public UserManagement(String userId, String fullName, String username,
-                          String birthday, String email, String countryCode,
-                          String phone, String gender, String password,
-                          String role) {
+    public UserManagement(String userId, String fullName, String username, String birthday, String email, String countryCode, String phone, String gender, String password, String role) {
         this.userId = userId;
         this.fullName = fullName;
         this.username = username;
@@ -33,9 +30,13 @@ public class UserManagement {
     }
 
 
-    public String getUserId() { return userId; }
-    public String getFullName() { return fullName; }
-    public String getUsername() { return username; }
+    public String getUserId() {
+        return userId;
+    }
+    public String getFullName() {
+        return fullName; }
+    public String getUsername() {
+        return username; }
     public String getBirthday() { return birthday; }
     public String getEmail() { return email; }
     public String getCountryCode() { return countryCode; }

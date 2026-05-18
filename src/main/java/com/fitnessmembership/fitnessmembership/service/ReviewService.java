@@ -69,6 +69,17 @@ public class ReviewService {
         return latestReviews;
     }
 
+    public Review getReviewById(String reviewId) {
+
+        for (Review review : getAllReviews()) {
+            if (review.getReviewId().equals(reviewId)) {
+                return review;
+            }
+        }
+
+        return null;
+    }
+
     public void deleteReview(String reviewId) {
 
         List<Review> reviews = getAllReviews();

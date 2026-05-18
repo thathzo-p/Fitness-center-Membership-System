@@ -26,6 +26,11 @@ public class UserController {
 
         if (user != null) {
             session.setAttribute("loggedUser", user);
+
+            if ("ADMIN".equalsIgnoreCase(user.getRole())) {
+                return "redirect:/admin/dashboard";
+            }
+
             return "redirect:/dashboard";
         }
 
@@ -86,6 +91,10 @@ public class UserController {
         );
 
         service.addUser(user);
+
+        if ("ADMIN".equalsIgnoreCase(user.getRole())) {
+            return "redirect:/admin/dashboard";
+        }
 
         return "redirect:/dashboard";
     }

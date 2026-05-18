@@ -72,13 +72,63 @@
             </a>
         </li>
 
-        <li>
-            <a class="<%= uri.contains("/profile") ? "active" : "" %>" href="/profile">
-                <i class="fa-solid fa-user"></i>
-                <span>Profile</span>
-            </a>
-        </li>
-
     </ul>
 
+    <div class="sidebar-bottom">
+        <a href="/logout" class="sidebar-logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
 </div>
+
+<script>
+    window.toggleSidebar = function () {
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("mainContent");
+
+        if (!sidebar) return;
+
+        const isCurrentlyCollapsed =
+                sidebar.classList.contains("collapsed");
+
+        if (isCurrentlyCollapsed) {
+            sidebar.classList.remove("collapsed");
+
+            if (mainContent) {
+                mainContent.classList.remove("expand-content");
+            }
+
+            document.documentElement.classList.remove("sidebar-is-collapsed");
+            localStorage.setItem("sidebarCollapsed", "false");
+
+        } else {
+            sidebar.classList.add("collapsed");
+
+            if (mainContent) {
+                mainContent.classList.add("expand-content");
+            }
+
+            document.documentElement.classList.add("sidebar-is-collapsed");
+            localStorage.setItem("sidebarCollapsed", "true");
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("mainContent");
+
+        if (!sidebar) return;
+
+        if (localStorage.getItem("sidebarCollapsed") === "true") {
+            sidebar.classList.add("collapsed");
+
+            if (mainContent) {
+                mainContent.classList.add("expand-content");
+            }
+
+            document.documentElement.classList.add("sidebar-is-collapsed");
+        }
+    });
+</script>

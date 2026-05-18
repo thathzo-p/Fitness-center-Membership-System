@@ -96,25 +96,17 @@ public class MemberProgressService {
         return null;
     }
 
-    public void updateProgress(String progressId,
-                               String memberId,
-                               String date,
-                               double weight,
-                               double height,
-                               int gymDays,
-                               String notes) {
+    public void updateProgress(String progressId, String memberId, String date, double weight, double height, int gymDays, String notes) {
 
         List<MemberProgress> progressList = getAllProgress();
 
-        try (BufferedWriter writer =
-                     new BufferedWriter(new FileWriter(FILE_PATH, false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) {
 
             for (MemberProgress p : progressList) {
 
                 if (p.getProgressId().equals(progressId)) {
 
-                    MemberProgress updated =
-                            new MemberProgress(progressId, memberId, date, weight, height, gymDays, notes);
+                    MemberProgress updated = new MemberProgress(progressId, memberId, date, weight, height, gymDays, notes);
 
                     writer.write(updated.toString());
 

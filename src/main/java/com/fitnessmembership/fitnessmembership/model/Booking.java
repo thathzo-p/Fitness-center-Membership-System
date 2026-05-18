@@ -8,9 +8,7 @@ public class Booking {
     private String fitnessClass;
     private String date;
     private String timeSlot;
-    private String status; // PENDING, CONFIRMED, CANCELLED
-
-    // ─── Constructors ───────────────────────────────────────────────────────────
+    private String status;
 
     public Booking() {}
 
@@ -25,37 +23,37 @@ public class Booking {
         this.status      = status;
     }
 
-    // ─── Getters & Setters ───────────────────────────────────────────────────────
 
-    public String getBookingId()               {
+    //getters and setters
+    public String getBookingId() {
         return bookingId;
     }
-    public void   setBookingId(String id)      {
+    public void   setBookingId(String id) {
         this.bookingId = id;
     }
 
-    public String getUserId()                  {
+    public String getUserId(){
         return userId;
     }
-    public void   setUserId(String userId)     {
+    public void   setUserId(String userId) {
         this.userId = userId;
     }
 
-    public String getMemberName()              {
+    public String getMemberName() {
         return memberName;
     }
-    public void   setMemberName(String name)   {
+    public void   setMemberName(String name) {
         this.memberName = name;
     }
 
-    public String getFitnessClass()            {
+    public String getFitnessClass() {
         return fitnessClass;
     }
     public void   setFitnessClass(String fc)   {
         this.fitnessClass = fc;
     }
 
-    public String getDate()                    {
+    public String getDate(){
         return date;
     }
     public void   setDate(String date)         {
@@ -65,16 +63,19 @@ public class Booking {
     public String getTimeSlot()                {
         return timeSlot;
     }
-    public void   setTimeSlot(String slot)     { this.timeSlot = slot; }
+    public void   setTimeSlot(String slot)     {
+        this.timeSlot = slot;
+    }
 
-    public String getStatus()                  { return status; }
-    public void   setStatus(String status)     { this.status = status; }
-
-    // ─── toString (used for file storage) ───────────────────────────────────────
+    public String getStatus()                  {
+        return status;
+    }
+    public void   setStatus(String status)     {
+        this.status = status;
+    }
 
     @Override
     public String toString() {
-        return bookingId + "|" + userId + "|" + memberName + "|"
-                + fitnessClass + "|" + date + "|" + timeSlot + "|" + status;
+        return bookingId + "|" + userId + "|" + memberName + "|" + fitnessClass + "|" + date + "|" + timeSlot + "|" + status;
     }
 }

@@ -19,8 +19,7 @@ public class MemberProgressController {
     @GetMapping
     public String viewMyProgress(HttpSession session, Model model) {
 
-        UserManagement user =
-                (UserManagement) session.getAttribute("loggedUser");
+        UserManagement user = (UserManagement) session.getAttribute("loggedUser");
 
         String memberId = "GUEST";
 
@@ -28,8 +27,7 @@ public class MemberProgressController {
             memberId = user.getUserId();
         }
 
-        List<MemberProgress> progressList =
-                progressService.getProgressByMemberId(memberId);
+        List<MemberProgress> progressList = progressService.getProgressByMemberId(memberId);
 
         model.addAttribute("progressList", progressList);
         model.addAttribute("memberId", memberId);
@@ -43,12 +41,7 @@ public class MemberProgressController {
     }
 
     @PostMapping("/add")
-    public String addProgress(@RequestParam String date,
-                              @RequestParam double weight,
-                              @RequestParam double height,
-                              @RequestParam int gymDays,
-                              @RequestParam String notes,
-                              HttpSession session) {
+    public String addProgress(@RequestParam String date, @RequestParam double weight, @RequestParam double height, @RequestParam int gymDays, @RequestParam String notes, HttpSession session) {
 
         UserManagement user =
                 (UserManagement) session.getAttribute("loggedUser");
@@ -59,14 +52,7 @@ public class MemberProgressController {
             memberId = user.getUserId();
         }
 
-        progressService.addProgress(
-                memberId,
-                date,
-                weight,
-                height,
-                gymDays,
-                notes
-        );
+        progressService.addProgress(memberId, date, weight, height, gymDays, notes);
 
         return "redirect:/progress";
     }
@@ -84,13 +70,7 @@ public class MemberProgressController {
     }
 
     @PostMapping("/edit")
-    public String updateProgress(@RequestParam String progressId,
-                                 @RequestParam String date,
-                                 @RequestParam double weight,
-                                 @RequestParam double height,
-                                 @RequestParam int gymDays,
-                                 @RequestParam String notes,
-                                 HttpSession session) {
+    public String updateProgress(@RequestParam String progressId, @RequestParam String date, @RequestParam double weight, @RequestParam double height, @RequestParam int gymDays, @RequestParam String notes, HttpSession session) {
 
         UserManagement user =
                 (UserManagement) session.getAttribute("loggedUser");
@@ -101,15 +81,7 @@ public class MemberProgressController {
             memberId = user.getUserId();
         }
 
-        progressService.updateProgress(
-                progressId,
-                memberId,
-                date,
-                weight,
-                height,
-                gymDays,
-                notes
-        );
+        progressService.updateProgress(progressId, memberId, date, weight, height, gymDays, notes);
 
         return "redirect:/progress";
     }

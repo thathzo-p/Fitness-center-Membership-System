@@ -135,12 +135,14 @@ function toggleSidebar(){
 
             <input type="text"
                    name="amount"
+                   value="${selectedAmount}"
                    placeholder="Amount"
+                   readonly
                    required>
 
             <input type="hidden"
                    name="description"
-                   value="Membership Payment">
+                   value="${description}">
 
             <input type="hidden"
                    name="date"

@@ -1,10 +1,17 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.fitnessmembership.fitnessmembership.model.Booking" %>
 <%@ page import="com.fitnessmembership.fitnessmembership.model.TrainerHire" %>
+<%@ page import="com.fitnessmembership.fitnessmembership.model.Payment" %>
 
 <!DOCTYPE html>
 <html>
 <head>
+
+    <script>
+        if (localStorage.getItem("sidebarCollapsed") === "true") {
+            document.documentElement.classList.add("sidebar-is-collapsed");
+        }
+    </script>
     <title>My Bookings</title>
 
     <link rel="stylesheet"
@@ -98,10 +105,71 @@
 
         </div>
 
-        <div class="class-booking-title">
-            <h1>My Class Bookings</h1>
-            <p>Your gym classes and workout session bookings.</p>
-        </div>
+                </div>
+
+                <!-- ADD MY ACTIVE PLANS SECTION HERE -->
+
+                <div class="plan-section">
+
+                    <div class="plan-header">
+                        <h1>My Active Plans</h1>
+                        <p>Your approved workout and meal plans.</p>
+                    </div>
+
+                    <div class="active-plan-grid">
+
+                        <%
+                            List<Payment> approvedPlans =
+                                    (List<Payment>) request.getAttribute("approvedPlans");
+
+                            if(approvedPlans != null && !approvedPlans.isEmpty()){
+                                for(Payment p : approvedPlans){
+                        %>
+
+                        <div class="active-plan-card">
+
+                            <div class="plan-badge">Plan Active</div>
+
+                            <h2><%= p.getDescription() %></h2>
+
+                            <div class="active-plan-details">
+
+                                <div>
+                                    <span>Amount</span>
+                                    <strong>$<%= p.getAmount() %></strong>
+                                </div>
+
+                                <div>
+                                    <span>Date</span>
+                                    <strong><%= p.getDate() %></strong>
+                                </div>
+
+                                <div>
+                                    <span>Status</span>
+                                    <strong><%= p.getStatus() %></strong>
+                                </div>
+
+                            </div>
+
+                            <p>
+                                Your selected plan has been approved and is now active in your FitClub account.
+                            </p>
+
+                        </div>
+
+                        <%
+                                }
+                            } else {
+                        %>
+
+                        <div class="active-plan-empty">
+                            <h2>No Active Plans Yet</h2>
+                            <p>Your approved plans will appear here after admin approval.</p>
+                        </div>
+                        <%
+                            }
+                        %>
+                    </div>
 
         <div class="booking-grid">
 
@@ -110,55 +178,48 @@
                         (List<Booking>) request.getAttribute("bookings");
 
                 if(bookings != null && !bookings.isEmpty()){
-                    for(Booking b : bookings){
             %>
 
-            <div class="booking-card">
-
-                <div class="booking-top">
-                    <h2><%= b.getFitnessClass() %></h2>
-                    <span class="status"><%= b.getStatus() %></span>
-                </div>
-
-                <p><strong>Member:</strong> <%= b.getMemberName() %></p>
-                <p><strong>Date:</strong> <%= b.getDate() %></p>
-                <p><strong>Time:</strong> <%= b.getTimeSlot() %></p>
-                <p><strong>Booking ID:</strong> <%= b.getBookingId() %></p>
-
-                <div class="booking-actions">
-                    <a href="/booking/edit/<%= b.getBookingId() %>" class="edit-booking">Edit</a>
-                    <a href="/booking/cancel/<%= b.getBookingId() %>" class="cancel-booking">Cancel</a>
-                </div>
-
+            <div class="class-booking-title">
+                <h1>My Class Bookings</h1>
+                <p>Your gym classes and workout session bookings.</p>
             </div>
 
-            <%
-                    }
-                } else {
-            %>
+            <div class="booking-grid">
 
-            <div class="empty-card">
-                <h2>No Class Bookings Yet</h2>
-                <p>You have not booked any workout sessions yet.</p>
-                <a href="/booking/new">Create Your First Booking</a>
+                <%
+                    for(Booking b : bookings){
+                %>
+
+                <div class="booking-card">
+
+                    <div class="booking-top">
+                        <h2><%= b.getFitnessClass() %></h2>
+                        <span class="status"><%= b.getStatus() %></span>
+                    </div>
+
+                    <p><strong>Member:</strong> <%= b.getMemberName() %></p>
+                    <p><strong>Date:</strong> <%= b.getDate() %></p>
+                    <p><strong>Time:</strong> <%= b.getTimeSlot() %></p>
+                    <p><strong>Booking ID:</strong> <%= b.getBookingId() %></p>
+
+                    <div class="booking-actions">
+                        <a href="/booking/edit/<%= b.getBookingId() %>" class="edit-booking">Edit</a>
+                        <a href="/booking/cancel/<%= b.getBookingId() %>" class="cancel-booking">Cancel</a>
+                    </div>
+
+                </div>
+
+                <%
+                    }
+                %>
+
             </div>
 
             <%
                 }
             %>
-
-        </div>
-
     </div>
-
 </div>
-
-<script>
-    function toggleSidebar(){
-        document.getElementById("sidebar").classList.toggle("collapsed");
-        document.getElementById("mainContent").classList.toggle("expand-content");
-    }
-</script>
-
 </body>
 </html>

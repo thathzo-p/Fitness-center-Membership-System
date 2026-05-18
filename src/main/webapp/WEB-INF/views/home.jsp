@@ -82,7 +82,7 @@
         <li><a href="#">Home</a></li>
 
         <li><a href="#gallery">Gallery</a></li>
-        <li><a href="/reviews">Reviews</a></li>
+        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 
@@ -291,7 +291,7 @@
 
 <!-- TESTIMONIALS -->
 
-<section class="testimonial-section">
+<section class="testimonial-section" id="reviews">
 
     <div class="section-title">
         <h4>TESTIMONIALS</h4>
@@ -309,20 +309,40 @@
             <h3>John Smith</h3>
         </div>
 
-        <div class="testimonial-card">
-            <p>
-                "FitClub completely transformed my fitness journey."
-            </p>
+        <%@ page import="java.util.List" %>
+        <%@ page import="com.fitnessmembership.fitnessmembership.model.Review" %>
 
-            <h3>Sarah Lee</h3>
-        </div>
+        <%
+            List<Review> latestReviews =
+                    (List<Review>) request.getAttribute("latestReviews");
+        %>
 
-        <div class="testimonial-card">
-            <p>
-                "Best equipment and flexible workout schedules."
-            </p>
+        <div class="testimonial-grid">
 
-            <h3>Michael Brown</h3>
+            <%
+                if (latestReviews != null && !latestReviews.isEmpty()) {
+                    for (Review review : latestReviews) {
+            %>
+
+            <div class="testimonial-card">
+                <p>"<%= review.getComment() %>"</p>
+                <h3><%= review.getMemberName() %></h3>
+            </div>
+
+            <%
+                    }
+                } else {
+            %>
+
+            <div class="testimonial-card">
+                <p>No reviews yet. Member feedback will appear here.</p>
+                <h3>FitClub</h3>
+            </div>
+
+            <%
+                }
+            %>
+
         </div>
 
     </div>

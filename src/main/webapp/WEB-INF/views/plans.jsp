@@ -5,6 +5,12 @@
 <html>
 <head>
 
+    <script>
+        if (localStorage.getItem("sidebarCollapsed") === "true") {
+            document.documentElement.classList.add("sidebar-is-collapsed");
+        }
+    </script>
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -14,14 +20,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/trainer.css">
 </head>
-
-<script>
-        function toggleSidebar(){
-            document.getElementById("sidebar").classList.toggle("collapsed");
-            document.getElementById("mainContent").classList.toggle("expand-content");
-        }
-
-</script>
 
 <body>
 <jsp:include page="components/sidebar.jsp" />
@@ -180,6 +178,7 @@
             buttons[1].classList.add("active");
         }
     }
+
 </script>
 
 </body>
