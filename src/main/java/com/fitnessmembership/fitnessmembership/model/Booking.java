@@ -25,6 +25,7 @@ public class Booking {
         this.status      = status;
     }
 
+    //getters and setters
     public String getBookingId()               {
         return bookingId;
     }
@@ -32,7 +33,7 @@ public class Booking {
         this.bookingId = id;
     }
 
-    public String getUserId()                  {
+    public String getUserId()   {
         return userId;
     }
     public void   setUserId(String userId)     {
