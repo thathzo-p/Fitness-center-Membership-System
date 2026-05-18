@@ -12,8 +12,9 @@ public class Payment {
     public Payment () {
     }
 
-    public Payment (String id, String userId, String amount,
-                    String description, String date, String status) {
+
+    public Payment (String id, String userId, String amount, String description, String date, String status) {
+
         this.id = id;
         this.userId = userId;
         this.amount = amount;
