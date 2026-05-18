@@ -29,12 +29,13 @@ public class UserManagement {
         this.role = role;
     }
 
-
+    // User ID
     public String getUserId() {
         return userId;
     }
 
-    public String getFullName() { //Full Name
+    // Full Name
+    public String getFullName() {
         return fullName;
     }
 
