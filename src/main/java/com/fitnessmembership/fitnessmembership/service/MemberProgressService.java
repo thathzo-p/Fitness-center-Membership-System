@@ -9,22 +9,15 @@ import java.util.UUID;
 
 public class MemberProgressService {
 
-    private static final String FILE_PATH = "data/progress.txt";
+    private static final String FILE_PATH = "data/progress.txt"; //data storing
 
-    public void addProgress(String memberId,
-                            String date,
-                            double weight,
-                            double height,
-                            int gymDays,
-                            String notes) {
+    public void addProgress(String memberId, String date, double weight, double height, int gymDays, String notes) {
 
         String progressId = UUID.randomUUID().toString().substring(0, 8);
 
-        MemberProgress progress =
-                new MemberProgress(progressId, memberId, date, weight, height, gymDays, notes);
+        MemberProgress progress = new MemberProgress(progressId, memberId, date, weight, height, gymDays, notes);
 
-        try (BufferedWriter writer =
-                     new BufferedWriter(new FileWriter(FILE_PATH, true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
 
             writer.write(progress.toString());
             writer.newLine();
@@ -96,25 +89,17 @@ public class MemberProgressService {
         return null;
     }
 
-    public void updateProgress(String progressId,
-                               String memberId,
-                               String date,
-                               double weight,
-                               double height,
-                               int gymDays,
-                               String notes) {
+    public void updateProgress(String progressId, String memberId, String date, double weight, double height, int gymDays, String notes) {
 
         List<MemberProgress> progressList = getAllProgress();
 
-        try (BufferedWriter writer =
-                     new BufferedWriter(new FileWriter(FILE_PATH, false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) {
 
             for (MemberProgress p : progressList) {
 
                 if (p.getProgressId().equals(progressId)) {
 
-                    MemberProgress updated =
-                            new MemberProgress(progressId, memberId, date, weight, height, gymDays, notes);
+                    MemberProgress updated = new MemberProgress(progressId, memberId, date, weight, height, gymDays, notes);
 
                     writer.write(updated.toString());
 
@@ -134,8 +119,7 @@ public class MemberProgressService {
 
         List<MemberProgress> progressList = getAllProgress();
 
-        try (BufferedWriter writer =
-                     new BufferedWriter(new FileWriter(FILE_PATH, false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) {
 
             for (MemberProgress p : progressList) {
 
