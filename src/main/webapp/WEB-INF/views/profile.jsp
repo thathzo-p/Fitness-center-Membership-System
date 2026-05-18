@@ -24,9 +24,7 @@
 </head>
 
 <body>
-
-<jsp:include page="components/sidebar.jsp" />
-<div class="main-content" id="mainContent">
+<div class="profile-page-wrapper">
 
 <div class="profile-page">
 
@@ -75,13 +73,6 @@
     </div>
 
 </div>
-
-<script>
-    function toggleSidebar(){
-        document.getElementById("sidebar").classList.toggle("collapsed");
-        document.getElementById("mainContent").classList.toggle("expand-content");
-    }
-</script>
 
 </body>
 </html>
