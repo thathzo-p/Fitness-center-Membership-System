@@ -15,7 +15,7 @@ public class BookingService {
         String bookingId = "BK" + LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 
-        Booking booking = new Booking(bookingId, userId,memberName,fitnessClass,date,timeSlot, "CONFIRMED");
+        Booking booking = new Booking(bookingId, userId, memberName, fitnessClass, date, timeSlot, "CONFIRMED");
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
             writer.write(booking.toString());
