@@ -1,153 +1,423 @@
-.progress-header{
+/* =========================
+   MAIN PROGRESS PAGE
+========================= */
+
+.progress-page{
+    width:100%;
+    padding-bottom:50px;
+}
+
+.progress-top-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:35px;
+    gap:25px;
+    margin-bottom:28px;
 }
 
-.progress-header h1{
-    font-size:42px;
+.progress-title-box h1{
+    font-size:44px;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:8px;
 }
 
-.progress-header p{
-    color:#bbbbbb;
-    margin-top:8px;
+.progress-title-box h1 i{
+    color:#ff3150;
+    font-size:34px;
 }
 
-.progress-btn{
-    background:#ff3131;
+.progress-title-box p{
+    color:#b8c0d4;
+    font-size:17px;
+}
+
+.add-progress-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:linear-gradient(135deg,#ff3150,#f02545);
     color:white;
     text-decoration:none;
-    padding:15px 28px;
-    border-radius:18px;
-    font-weight:700;
-}
-
-.progress-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-}
-
-.progress-card,
-.empty-progress,
-.progress-form-card{
-    background:linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03));
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:26px;
-    padding:30px;
-}
-
-.progress-card{
+    padding:17px 28px;
+    border-radius:16px;
+    font-weight:800;
+    white-space:nowrap;
+    box-shadow:0 14px 30px rgba(255,49,80,0.24);
     transition:0.3s;
 }
 
-.progress-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 18px 40px rgba(255,49,49,0.16);
+.add-progress-btn:hover{
+    transform:translateY(-3px);
 }
 
-.progress-top{
+
+/* =========================
+   SUMMARY CARDS
+========================= */
+
+.progress-summary-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:22px;
+}
+
+.advanced-summary-card{
+    min-height:190px;
+    background:
+            linear-gradient(180deg,rgba(14,25,47,0.96),rgba(8,16,32,0.96));
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:22px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 18px 40px rgba(0,0,0,0.16);
+}
+
+.summary-top{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.summary-icon{
+    width:60px;
+    height:60px;
+    border-radius:16px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+}
+
+.purple-icon{
+    color:#e9c7ff;
+    background:linear-gradient(135deg,#7e22ce,#b146ff);
+    box-shadow:0 10px 25px rgba(177,70,255,0.24);
+}
+
+.cyan-icon{
+    color:#baf8ff;
+    background:linear-gradient(135deg,#06677a,#00bcd4);
+    box-shadow:0 10px 25px rgba(0,212,255,0.20);
+}
+
+.gold-icon{
+    color:#ffe4a3;
+    background:linear-gradient(135deg,#b26c00,#ffb21a);
+    box-shadow:0 10px 25px rgba(255,178,26,0.20);
+}
+
+.green-icon{
+    color:#cbffe0;
+    background:linear-gradient(135deg,#116536,#22c55e);
+    box-shadow:0 10px 25px rgba(34,197,94,0.20);
+}
+
+.summary-top span{
+    display:block;
+    color:#cbd5e1;
+    font-size:15px;
+    margin-bottom:6px;
+}
+
+.summary-top h2{
+    color:white;
+    font-size:30px;
+    margin:0;
+}
+
+.summary-status{
+    margin-top:15px;
+    font-size:14px;
+    color:#d0d7e6;
+    min-height:20px;
+}
+
+.green-text{
+    color:#22c55e;
+}
+
+.gold-text{
+    color:#fbbf24;
+}
+
+.red-text{
+    color:#ff5b6f;
+}
+
+.mini-chart-box{
+    height:48px;
+    margin-top:12px;
+}
+
+
+/* =========================
+   ANALYTICS GRID
+========================= */
+
+.progress-analytics-grid{
+    display:grid;
+    grid-template-columns:1.25fr 1.25fr 1fr;
+    gap:18px;
+    margin-bottom:22px;
+}
+
+.large-chart-card,
+.side-insight-card{
+    background:
+            linear-gradient(180deg,rgba(14,25,47,0.96),rgba(8,16,32,0.96));
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 18px 40px rgba(0,0,0,0.16);
+}
+
+.chart-title-row{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:25px;
+    gap:14px;
+    margin-bottom:18px;
 }
 
-.progress-top h2{
-    font-size:24px;
-}
-
-.progress-top span{
-    background:#ff3131;
+.chart-title-row h2{
     color:white;
-    padding:8px 14px;
-    border-radius:14px;
-    font-weight:700;
-}
-
-.progress-stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-bottom:22px;
-}
-
-.progress-stats div{
-    background:rgba(255,255,255,0.06);
-    padding:18px;
-    border-radius:18px;
-}
-
-.progress-stats h3{
-    color:#ff3131;
-    font-size:24px;
-}
-
-.progress-stats p{
-    color:#bbbbbb;
-    margin-top:6px;
-}
-
-.notes{
-    color:#d1d1d1;
-    line-height:1.6;
-    margin-bottom:22px;
-}
-
-.progress-actions{
+    font-size:19px;
     display:flex;
+    align-items:center;
     gap:12px;
+}
+
+.chart-title-row h2 i{
+    color:#e4e9f5;
+}
+
+.chart-tag{
+    padding:8px 12px;
+    background:rgba(255,255,255,0.06);
+    border-radius:999px;
+    color:#dbe3f5;
+    font-weight:700;
+    font-size:13px;
+}
+
+.healthy-tag{
+    color:#22c55e;
+}
+
+.large-chart-canvas{
+    height:275px;
+}
+
+.side-chart-canvas{
+    height:210px;
+}
+
+.latest-note-card{
+    margin-top:18px;
+    padding:16px;
+    border-radius:16px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.latest-note-icon{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+    flex:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(34,197,94,0.18);
+    color:#22c55e;
+    font-size:18px;
+}
+
+.latest-note-card span{
+    color:#cbd5e1;
+    font-size:13px;
+    display:block;
+    margin-bottom:5px;
+}
+
+.latest-note-card p{
+    color:white;
+    line-height:1.55;
+    font-size:14px;
+}
+
+
+/* =========================
+   HISTORY TABLE
+========================= */
+
+.progress-history-panel{
+    background:
+            linear-gradient(180deg,rgba(14,25,47,0.96),rgba(8,16,32,0.96));
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 18px 40px rgba(0,0,0,0.16);
+}
+
+.history-panel-header{
+    margin-bottom:22px;
+}
+
+.history-panel-header h2{
+    color:white;
+    font-size:22px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:6px;
+}
+
+.history-panel-header h2 i{
+    color:#f8fafc;
+}
+
+.history-panel-header p{
+    color:#b8c0d4;
+    font-size:15px;
+}
+
+.history-table{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.history-row{
+    display:grid;
+    grid-template-columns:1.15fr 1fr .85fr 1fr 1fr 1.6fr .75fr;
+    align-items:center;
+    gap:16px;
+    padding:15px 16px;
+    color:#e5e7eb;
+    border-radius:14px;
+    background:rgba(255,255,255,0.035);
+    border:1px solid rgba(255,255,255,0.045);
+}
+
+.history-head{
+    background:transparent;
+    border:none;
+    padding-top:0;
+    padding-bottom:6px;
+    color:#cbd5e1;
+    font-weight:800;
+}
+
+.bmi-pill{
+    background:rgba(34,197,94,0.18);
+    color:#22c55e;
+    padding:7px 12px;
+    border-radius:999px;
+    font-size:14px;
+}
+
+.history-note{
+    color:#d1d5db;
+}
+
+.history-actions{
+    display:flex;
+    gap:10px;
 }
 
 .edit-progress,
 .delete-progress{
-    flex:1;
-    text-align:center;
+    width:36px;
+    height:36px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:10px;
     text-decoration:none;
-    padding:13px;
-    border-radius:15px;
-    font-weight:700;
+    font-size:15px;
+    transition:0.25s;
 }
 
 .edit-progress{
-    background:#2563eb;
-    color:white;
+    color:#3b82f6;
+    background:rgba(59,130,246,0.14);
 }
 
 .delete-progress{
-    background:#dc2626;
-    color:white;
+    color:#ff3150;
+    background:rgba(255,49,80,0.14);
 }
 
+.edit-progress:hover,
+.delete-progress:hover{
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
 .empty-progress{
-    grid-column:1 / -1;
+    padding:55px 20px;
     text-align:center;
-    padding:60px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.04);
+}
+
+.empty-progress i{
+    color:#ff3150;
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.empty-progress h3{
+    color:white;
+    font-size:26px;
+    margin-bottom:10px;
 }
 
 .empty-progress p{
-    color:#bbbbbb;
-    margin:15px 0 25px;
+    color:#b8c0d4;
+    margin-bottom:24px;
 }
 
 .empty-progress a{
-    background:#ff3131;
-    color:white;
+    display:inline-block;
     text-decoration:none;
-    padding:15px 28px;
-    border-radius:18px;
-    font-weight:700;
+    padding:14px 24px;
+    border-radius:14px;
+    background:#ff3150;
+    color:white;
+    font-weight:800;
 }
 
-/* FORM */
+
+/* =========================
+   PROGRESS ADD / EDIT FORM
+   KEEPING YOUR EXISTING FORM STYLE
+========================= */
 
 .progress-form-card{
-    max-width:600px;
+    max-width:650px;
+    background:linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03));
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:26px;
+    padding:32px;
 }
 
 .progress-form-card h1{
     font-size:38px;
+    color:white;
 }
 
 .progress-form-card p{
@@ -195,14 +465,53 @@
     font-weight:700;
 }
 
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1400px){
+    .progress-summary-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .progress-analytics-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .side-insight-card{
+        grid-column:1 / -1;
+    }
+}
+
 @media(max-width:1100px){
-    .progress-grid{
+    .progress-top-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .progress-summary-grid{
         grid-template-columns:1fr;
     }
 
-    .progress-header{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:20px;
+    .progress-analytics-grid{
+        grid-template-columns:1fr;
+    }
+
+    .side-insight-card{
+        grid-column:auto;
+    }
+
+    .history-row{
+        grid-template-columns:1fr;
+        gap:8px;
+    }
+
+    .history-head{
+        display:none;
+    }
+
+    .large-chart-canvas{
+        height:250px;
     }
 }
