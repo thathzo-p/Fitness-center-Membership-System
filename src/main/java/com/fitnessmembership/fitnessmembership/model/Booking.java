@@ -8,14 +8,12 @@ public class Booking {
     private String fitnessClass;
     private String date;
     private String timeSlot;
-    private String status; // PENDING, CONFIRMED, CANCELLED
+    private String status;
 
-    // ─── Constructors ───────────────────────────────────────────────────────────
 
     public Booking() {}
 
-    public Booking(String bookingId, String userId, String memberName,
-                   String fitnessClass, String date, String timeSlot, String status) {
+    public Booking(String bookingId, String userId, String memberName, String fitnessClass, String date, String timeSlot, String status) {
         this.bookingId   = bookingId;
         this.userId      = userId;
         this.memberName  = memberName;
@@ -25,36 +23,37 @@ public class Booking {
         this.status      = status;
     }
 
-    //getters and setters
-    public String getBookingId()               {
+
+//getters and setters
+    public String getBookingId() {
         return bookingId;
     }
-    public void   setBookingId(String id)      {
+    public void   setBookingId(String id) {
         this.bookingId = id;
     }
 
-    public String getUserId()   {
+    public String getUserId(){
         return userId;
     }
-    public void   setUserId(String userId)     {
+    public void   setUserId(String userId) {
         this.userId = userId;
     }
 
-    public String getMemberName()              {
+    public String getMemberName() {
         return memberName;
     }
-    public void   setMemberName(String name)   {
+    public void   setMemberName(String name) {
         this.memberName = name;
     }
 
-    public String getFitnessClass()            {
+    public String getFitnessClass() {
         return fitnessClass;
     }
     public void   setFitnessClass(String fc)   {
         this.fitnessClass = fc;
     }
 
-    public String getDate()                    {
+    public String getDate(){
         return date;
     }
     public void   setDate(String date)         {
@@ -75,7 +74,7 @@ public class Booking {
         this.status = status;
     }
 
-    //BOOKING OV
+
 
     @Override
     public String toString() {
