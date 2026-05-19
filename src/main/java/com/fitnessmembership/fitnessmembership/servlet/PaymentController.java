@@ -16,6 +16,7 @@ public class PaymentController {
 
     private PaymentService paymentService = new PaymentService();
 
+
     // READ — view all payments
     @GetMapping
     public String viewPayments(Model model) {
@@ -33,24 +34,15 @@ public class PaymentController {
 
     // CREATE — submit new payment
     @PostMapping("/add")
-    public String addPayment(@RequestParam String amount,
-                             @RequestParam String description,
-                             @RequestParam String date,
-                             HttpSession session) {
+    public String addPayment(@RequestParam String amount, @RequestParam String description, @RequestParam String date, HttpSession session) {
 
-        UserManagement user =
-                (UserManagement) session.getAttribute("loggedUser");
+        UserManagement user = (UserManagement) session.getAttribute("loggedUser");
 
         if (user == null) {
             return "redirect:/login";
         }
 
-        paymentService.addPayment(
-                user.getUserId(),
-                amount,
-                description,
-                date
-        );
+        paymentService.addPayment(user.getUserId(), amount, description, date);
 
         return "redirect:/payments";
     }
@@ -72,9 +64,7 @@ public class PaymentController {
 
     // DELETE — delete payment
     @GetMapping("/portal")
-    public String paymentPortal(@RequestParam(required = false) String plan,
-                                @RequestParam(required = false) String amount,
-                                Model model) {
+    public String paymentPortal(@RequestParam(required = false) String plan, @RequestParam(required = false) String amount, Model model) {
 
         if (plan == null || amount == null) {
             return "redirect:/plans";
@@ -83,6 +73,6 @@ public class PaymentController {
         model.addAttribute("description", plan);
         model.addAttribute("selectedAmount", amount);
 
-        return "payment-portal";
+        return "payment-portal"; // return to portal again
     }
 }
