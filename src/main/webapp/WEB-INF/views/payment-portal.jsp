@@ -105,10 +105,7 @@ function toggleSidebar(){
                 Payment Details
             </h2>
 
-            <input type="text"
-                   name="userId"
-                   placeholder="User ID"
-                   required>
+
 
             <input type="text"
                    id="cardNumber"
@@ -138,12 +135,14 @@ function toggleSidebar(){
 
             <input type="text"
                    name="amount"
+                   value="${selectedAmount}"
                    placeholder="Amount"
+                   readonly
                    required>
 
             <input type="hidden"
                    name="description"
-                   value="Membership Payment">
+                   value="${description}">
 
             <input type="hidden"
                    name="date"
@@ -172,21 +171,17 @@ function toggleSidebar(){
 
 <script>
 
-const cardNumber =
-    document.getElementById('cardNumber');
+const cardNumber = document.getElementById('cardNumber');
 
-const cardHolder =
-    document.getElementById('cardHolder');
+const cardHolder = document.getElementById('cardHolder');
 
-const expiry =
-    document.getElementById('expiry');
+const expiry = document.getElementById('expiry');
 
 cardNumber.addEventListener('input',()=>{
 
     document.getElementById(
         'cardNumberPreview'
-    ).innerText =
-        cardNumber.value || '#### #### #### ####';
+    ).innerText = cardNumber.value || '#### #### #### ####';
 });
 
 cardHolder.addEventListener('input',()=>{
@@ -207,8 +202,7 @@ expiry.addEventListener('input',()=>{
 
 document.getElementById(
     'dateField'
-).value =
-    new Date().toISOString().split('T')[0];
+).value =new Date().toISOString().split('T')[0];
 
 document.getElementById(
     'paymentForm'
@@ -218,6 +212,19 @@ document.getElementById(
         'successPopup'
     ).style.display='block';
 });
+
+ const cardInput = document.getElementById("cardNumber");
+
+    cardInput.addEventListener("input", function () {
+
+        let value = this.value.replace(/\D/g, "");
+
+        value = value.substring(0, 16);
+
+        value = value.replace(/(.{4})/g, "$1 ").trim();
+
+        this.value = value;
+    });
 
 </script>
 
