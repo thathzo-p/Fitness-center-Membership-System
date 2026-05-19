@@ -1,86 +1,41 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.fitnessmembership.fitnessmembership.model.MemberProgress" %>
+<%@ page import="com.fitnessmembership.fitnessmembership.model.Review" %>
+
+<%
+    List<MemberProgress> progressList =
+            (List<MemberProgress>) request.getAttribute("progressList");
+
+    MemberProgress latestProgress =
+            (MemberProgress) request.getAttribute("latestProgress");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
+
+    <script>
+        if (localStorage.getItem("sidebarCollapsed") === "true") {
+            document.documentElement.classList.add("sidebar-is-collapsed");
+        }
+    </script>
+
     <title>Member Dashboard</title>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/css/dashboard.css">
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/progress.css">
 </head>
 
 <body>
 
-<div class="sidebar" id="sidebar">
-
-    <div class="sidebar-header">
-
-        <div class="logo">
-            Fit<span>Club</span>
-        </div>
-
-        <button class="menu-toggle"
-                onclick="toggleSidebar()">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-
-    </div>
-
-    <ul>
-
-        <li>
-            <a class="active" href="/dashboard">
-                <i class="fa-solid fa-house"></i>
-                <span>Dashboard</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="/trainers">
-                <i class="fa-solid fa-user-group"></i>
-                <span>Trainers</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="/plans">
-                <i class="fa-solid fa-dumbbell"></i>
-                <span>Plans</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="/booking/my">
-                <i class="fa-solid fa-calendar-check"></i>
-                <span>Bookings</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="/progress">
-                <i class="fa-solid fa-chart-line"></i>
-                <span>Progress</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="/reviews">
-                <i class="fa-solid fa-star"></i>
-                <span>Reviews</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="/payments">
-                <i class="fa-solid fa-credit-card"></i>
-                <span>My Payments</span>
-            </a>
-        </li>
-
-    </ul>
-
-</div>
+<jsp:include page="components/sidebar.jsp" />
 
 <div class="main-content" id="mainContent">
 
@@ -158,6 +113,84 @@
 
     </div>
 
+    <div class="dashboard-progress-preview">
+
+        <div class="progress-preview-header">
+            <div>
+                <h2>Your Fitness Progress</h2>
+                <p>Latest updates from your personal progress reports.</p>
+            </div>
+
+            <a href="/progress">
+                View Full Progress
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="dashboard-progress-cards">
+
+            <div class="dashboard-progress-card">
+                <span>Latest Weight</span>
+                <h3>
+                    <%= latestProgress != null ? latestProgress.getWeight() + " kg" : "--" %>
+                </h3>
+                <p>From your latest report</p>
+            </div>
+
+            <div class="dashboard-progress-card">
+                <span>Latest BMI</span>
+                <h3>
+                    <%= latestProgress != null ? latestProgress.getBmi() : "--" %>
+                </h3>
+                <p>Current BMI record</p>
+            </div>
+
+            <div class="dashboard-progress-card">
+                <span>Gym Days</span>
+                <h3>
+                    <%= latestProgress != null ? latestProgress.getGymDays() + " Days" : "--" %>
+                </h3>
+                <p>Latest monthly attendance</p>
+            </div>
+
+        </div>
+
+        <div class="dashboard-progress-charts">
+
+            <div class="dashboard-chart-card">
+                <h3>
+                    <i class="fa-solid fa-weight-scale"></i>
+                    Weight Progress
+                </h3>
+                <div class="dashboard-chart-box">
+                    <canvas id="dashWeightChart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-chart-card">
+                <h3>
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    BMI Progress
+                </h3>
+                <div class="dashboard-chart-box">
+                    <canvas id="dashBmiChart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-chart-card">
+                <h3>
+                    <i class="fa-solid fa-calendar-check"></i>
+                    Gym Attendance
+                </h3>
+                <div class="dashboard-chart-box">
+                    <canvas id="dashGymChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
     <div class="dashboard-grid">
 
         <div class="activity-card">
@@ -180,48 +213,226 @@
 
         </div>
 
+        <%@ page import="java.util.List" %>
+        <%@ page import="com.fitnessmembership.fitnessmembership.model.Review" %>
+
+        <%
+            List<Review> latestReviews =
+                    (List<Review>) request.getAttribute("latestReviews");
+        %>
+
         <div class="activity-card">
             <h2>Latest Reviews</h2>
 
-            <div class="activity">
-                <strong>Excellent trainers</strong>
-                <span>The trainers are friendly and professional.</span>
-            </div>
+            <%
+                if (latestReviews != null && !latestReviews.isEmpty()) {
+                    for (Review review : latestReviews) {
+            %>
 
             <div class="activity">
-                <strong>Great equipment</strong>
-                <span>Modern gym machines and clean environment.</span>
+                <strong><%= review.getMemberName() %></strong>
+                <span><%= review.getComment() %></span>
             </div>
+
+            <%
+                    }
+                } else {
+            %>
 
             <div class="activity">
-                <strong>Best plans</strong>
-                <span>Workout and meal plans helped me improve fast.</span>
+                <strong>No reviews yet</strong>
+                <span>Member reviews will appear here.</span>
             </div>
 
+            <%
+                }
+            %>
         </div>
-
-    </div>
-
-    <div class="quick-actions">
-
-        <a href="/trainers">View Trainers</a>
-        <a href="/plans">Workout Plans</a>
-        <a href="/plans">Meal Plans</a>
-        <a href="/payments/portal">Make Payment</a>
 
     </div>
 
 </div>
 
 <script>
-    function toggleSidebar(){
-        document.getElementById("sidebar").classList.toggle("collapsed");
-        document.getElementById("mainContent").classList.toggle("expand-content");
-    }
 
     function toggleProfileMenu(){
         document.getElementById("profileDropdown").classList.toggle("show");
     }
+
+    const dashboardProgressLabels = [
+        <%
+            if (progressList != null) {
+                for (MemberProgress p : progressList) {
+        %>
+        "<%= p.getDate() %>",
+        <%
+                }
+            }
+        %>
+    ];
+
+    const dashboardWeightData = [
+        <%
+            if (progressList != null) {
+                for (MemberProgress p : progressList) {
+        %>
+        <%= p.getWeight() %>,
+        <%
+                }
+            }
+        %>
+    ];
+
+    const dashboardBmiData = [
+        <%
+            if (progressList != null) {
+                for (MemberProgress p : progressList) {
+        %>
+        <%= p.getBmi() %>,
+        <%
+                }
+            }
+        %>
+    ];
+
+    const dashboardGymData = [
+        <%
+            if (progressList != null) {
+                for (MemberProgress p : progressList) {
+        %>
+        <%= p.getGymDays() %>,
+        <%
+                }
+            }
+        %>
+    ];
+
+    function createDashboardLineChart(canvasId, labels, data, label, borderColor, backgroundColor) {
+        const chartCanvas = document.getElementById(canvasId);
+
+        if (!chartCanvas) return;
+
+        new Chart(chartCanvas, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: label,
+                    data: data,
+                    borderColor: borderColor,
+                    backgroundColor: backgroundColor,
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: "#d1d5db"
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: "#94a3b8"
+                        },
+                        grid: {
+                            color: "rgba(255,255,255,0.05)"
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: "#94a3b8"
+                        },
+                        grid: {
+                            color: "rgba(255,255,255,0.05)"
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function createDashboardBarChart(canvasId, labels, data) {
+        const chartCanvas = document.getElementById(canvasId);
+
+        if (!chartCanvas) return;
+
+        new Chart(chartCanvas, {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Gym Days",
+                    data: data,
+                    backgroundColor: "rgba(255,49,49,0.85)",
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: "#d1d5db"
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: "#94a3b8"
+                        },
+                        grid: {
+                            color: "rgba(255,255,255,0.05)"
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: "#94a3b8"
+                        },
+                        grid: {
+                            color: "rgba(255,255,255,0.05)"
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    createDashboardLineChart(
+        "dashWeightChart",
+        dashboardProgressLabels,
+        dashboardWeightData,
+        "Weight",
+        "#b146ff",
+        "rgba(177,70,255,0.18)"
+    );
+
+    createDashboardLineChart(
+        "dashBmiChart",
+        dashboardProgressLabels,
+        dashboardBmiData,
+        "BMI",
+        "#2f7cff",
+        "rgba(47,124,255,0.18)"
+    );
+
+    createDashboardBarChart(
+        "dashGymChart",
+        dashboardProgressLabels,
+        dashboardGymData
+    );
+
+
 </script>
 
 </body>
