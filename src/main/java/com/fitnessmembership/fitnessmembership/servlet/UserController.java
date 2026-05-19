@@ -17,9 +17,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@RequestParam String username,
-                            @RequestParam String password,
-                            HttpSession session) {
+    public String loginUser(@RequestParam String username, @RequestParam String password, HttpSession session) {
 
         UserManagement user = service.login(username, password);
 
@@ -60,29 +58,11 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String signupUser(@RequestParam String fullName,
-                             @RequestParam String username,
-                             @RequestParam String birthday,
-                             @RequestParam String email,
-                             @RequestParam String countryCode,
-                             @RequestParam String phone,
-                             @RequestParam String gender,
-                             @RequestParam String password) {
+    public String signupUser(@RequestParam String fullName, @RequestParam String username, @RequestParam String birthday, @RequestParam String email, @RequestParam String countryCode, @RequestParam String phone, @RequestParam String gender, @RequestParam String password) {
 
         String userId = "U" + System.currentTimeMillis();
 
-        UserManagement user = new UserManagement(
-                userId,
-                fullName,
-                username,
-                birthday,
-                email,
-                countryCode,
-                phone,
-                gender,
-                password,
-                "MEMBER"
-        );
+        UserManagement user = new UserManagement(userId, fullName, username, birthday, email, countryCode, phone, gender, password, "MEMBER");
 
         service.addUser(user);
 
