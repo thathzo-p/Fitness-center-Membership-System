@@ -82,9 +82,8 @@
         <li><a href="#">Home</a></li>
 
         <li><a href="#gallery">Gallery</a></li>
-        <li><a href="/reviews">Reviews</a></li>
-        <li><a href="reviews">Reviews</a></li>
-        <li><a href="contact">Contact</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
 
     <div class="nav-buttons">
@@ -130,18 +129,12 @@
 
         <div class="hero-buttons">
 
-            <a href="#plans"
-               class="primary-btn">
-
+            <a href="${pageContext.request.contextPath}/login" class="primary-btn">
                 Explore Plans
-
             </a>
 
-            <a href="/dashboard"
-               class="secondary-btn">
-
+            <a href="${pageContext.request.contextPath}/login" class="secondary-btn">
                 Start Training
-
             </a>
 
         </div>
@@ -266,9 +259,39 @@
 
 </section>
 
+<!-- CONTACT -->
+
+<section class="contact-section" id="contact">
+
+    <div class="section-title">
+        <h4>CONTACT US</h4>
+        <h2>Get In Touch</h2>
+    </div>
+
+    <div class="contact-box">
+
+        <div class="contact-info">
+            <h3>FitClub Fitness Center</h3>
+            <p>📍 Colombo, Sri Lanka</p>
+            <p>📞 +94 77 123 4567</p>
+            <p>✉ fitclub@gmail.com</p>
+            <p>🕒 Mon - Sat: 6.00 AM - 10.00 PM</p>
+        </div>
+
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Your Message"></textarea>
+            <button type="button">Send Message</button>
+        </form>
+
+    </div>
+
+</section>
+
 <!-- TESTIMONIALS -->
 
-<section class="testimonial-section">
+<section class="testimonial-section" id="reviews">
 
     <div class="section-title">
         <h4>TESTIMONIALS</h4>
@@ -286,20 +309,40 @@
             <h3>John Smith</h3>
         </div>
 
-        <div class="testimonial-card">
-            <p>
-                "FitClub completely transformed my fitness journey."
-            </p>
+        <%@ page import="java.util.List" %>
+        <%@ page import="com.fitnessmembership.fitnessmembership.model.Review" %>
 
-            <h3>Sarah Lee</h3>
-        </div>
+        <%
+            List<Review> latestReviews =
+                    (List<Review>) request.getAttribute("latestReviews");
+        %>
 
-        <div class="testimonial-card">
-            <p>
-                "Best equipment and flexible workout schedules."
-            </p>
+        <div class="testimonial-grid">
 
-            <h3>Michael Brown</h3>
+            <%
+                if (latestReviews != null && !latestReviews.isEmpty()) {
+                    for (Review review : latestReviews) {
+            %>
+
+            <div class="testimonial-card">
+                <p>"<%= review.getComment() %>"</p>
+                <h3><%= review.getMemberName() %></h3>
+            </div>
+
+            <%
+                    }
+                } else {
+            %>
+
+            <div class="testimonial-card">
+                <p>No reviews yet. Member feedback will appear here.</p>
+                <h3>FitClub</h3>
+            </div>
+
+            <%
+                }
+            %>
+
         </div>
 
     </div>
